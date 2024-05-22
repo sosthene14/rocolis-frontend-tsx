@@ -1,22 +1,24 @@
-import { gradientBtn, subTitlesClassNames, titleClassNames } from "@/common/ClassNames";
+import {
+  gradientBtn,
+  subTitlesClassNames,
+  titleClassNames,
+} from "@/common/ClassNames";
 import { destinationsDatas } from "@/constants/variables";
 
 export const AllDestinations = () => {
-
   return (
-    <div className="flex-col mx-52  ">
-      <div className="flex justify-center items-center gap-10  mt-20 flex-wrap w-96 md:w-full ">
-        <div className="flex flex-col md:gap-0 mx-8 md:mx-0 ">
-          <div >
-            <p className={titleClassNames}>Planifiez votre envoi parfait</p>
-          </div>
-          <div >
-            <p className={subTitlesClassNames}>Toutes les destinations possible</p>
-          </div>
+    <div className="flex-col items-center ">
+      <div className="flex justify-center flex-col items-center">
+        <div>
+          <p className={titleClassNames}>Planifiez votre envoi parfait</p>
+        </div>
+        <div>
+          <p className={subTitlesClassNames}>
+            Toutes les destinations possible
+          </p>
         </div>
       </div>
-      {/*  */}
-      <div className="flex flex-wrap justify-center items-start gap-0 md:gap-10 mt-10">
+      <div className="flex flex-wrap justify-center items-start gap-0 sm:gap-10 mt-10">
         {destinationsDatas.map((data, index) => (
           <div
             key={index}
@@ -53,4 +55,3 @@ export const AllDestinations = () => {
     </div>
   );
 };
-

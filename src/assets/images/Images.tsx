@@ -11,6 +11,7 @@ import nigeria from "./nigeria.webp";
 import rdc from "./rdc.webp";
 import senegal from "./senegal.webp";
 
+
 export const heroImg = heroImage;
 
 export const picsList = [ad1Pic, ad2Pic];
@@ -26,3 +27,4 @@ export const destinationsList = [
   rdc,
   senegal,
 ];
+

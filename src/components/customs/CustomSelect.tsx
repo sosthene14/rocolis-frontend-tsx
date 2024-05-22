@@ -116,10 +116,10 @@ export function CustomSelect({
       <PopoverContent className="w-[250px] p-0">
         <Command className="bg-white">
           <CommandInput
-            className="pb-2 my-2"
+            className="pb-2 my-2 text-slate-800 text-sm "
             placeholder={`Ville ${cityType}`}
           />
-          <CommandEmpty>Cette ville n'est pas encore disponible</CommandEmpty>
+          <CommandEmpty className="text-slate-800 text-sm text-center">Cette ville n'est pas encore disponible</CommandEmpty>
           <CommandGroup className="mt-3">
             <CommandList>
               {frameworks.map((option) => (
