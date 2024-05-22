@@ -60,7 +60,7 @@ export function CustomCarousel() {
           {Array.from({ length: 6 }).map((_, index) => (
             <CarouselItem
               key={index}
-              className="w-full basis-[30%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+              className="w-full  basis-[20%] sm:basis-1/3 md:basis-1/3 lg:basis-1/4"
             >
               <div className="p-2 w-full">
                 <Card
@@ -105,11 +105,12 @@ export function CustomCarousel() {
                         />
                         <p className="absolute text-lg font-bold text-left ml-5 top-1/4 flex justify-center text-white">
                           Bonjour je voyage le 5/12/2024
-                        </p>
-                        <p className="absolute text-md font-bold mt-10 ml-5 top-1/4 flex justify-center text-white text-left">
+                          <p className="absolute text-md font-bold mt-10 top-1/4 flex justify-center text-white text-left">
                           J'ai 5 kgs de plus à vendre contactez moi pour plus
                           d'informations
                         </p>
+                        </p>
+                     
                       </div>
                       <div className="flex justify-between items-center w-full">
                         <div
