@@ -93,3 +93,6 @@ export const HeroBackgroundStyle = {
   justifyContent: "center",
   alignItems: "center",
 };
+
+export const titleClassNames = "text-3xl mb-10 font-bold dark:text-white text-slate-600"
+export const subTitlesClassNames = "text-xl text-center mb-10 font-bold dark:text-white text-slate-600"
