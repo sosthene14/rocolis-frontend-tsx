@@ -5,19 +5,25 @@ import { MouseEventHandler } from "react";
 
 interface IProps {
   shareIndex?: (index: number) => void;
-  index?:number;
-  current?:number;
-  handlePopoverClick? : MouseEventHandler<HTMLDivElement|HTMLButtonElement>
-  picsList?:string[]
+  index?: number;
+  current?: number;
+  handlePopoverClick?: MouseEventHandler<HTMLDivElement | HTMLButtonElement>;
+  picsList?: string[];
 }
 
-export default function CardAds({ shareIndex,index,current,handlePopoverClick,picsList }: IProps) {
+export default function CardAds({
+  shareIndex,
+  index,
+  current,
+  handlePopoverClick,
+  picsList,
+}: IProps) {
   return (
     <div className="p-2 w-full">
       <div
         onClick={() => shareIndex && index && shareIndex(index)}
         className={`w-[21rem] sm:w-full  cursor-pointer ${
-          current && (index === current - 1)
+          current && index === current - 1
             ? "bg-slate-200 dark:bg-slate-600"
             : "bg-white dark:bg-slate-700"
         } mx-auto shadow-md rounded-lg`}
@@ -45,10 +51,10 @@ export default function CardAds({ shareIndex,index,current,handlePopoverClick,pi
             </div>
             <div className="w-full text-[#162F66] font-['Angkor'] dark:text-white text-[8px] sm:text-[10px] flex justify-between items-center">
               <p className="flex flex-col">
-                Depuis <span className="text-sm">Dakar</span>
+                Depuis <span className="text-sm truncate text-ellipsis">Dakar</span>
               </p>
               <p className="flex flex-col">
-                Pour <span className="text-sm">Pointe-noire</span>
+                Pour <span className="text-sm truncate text-ellipsis">Pointe-noire</span>
               </p>
               <button
                 className="rounded-xl text-xs sm:text-sm dark:hover:bg-gray-600 hover:bg-slate-200 bg-transparent px-2 py-1 sm:px-4 sm:py-2 border border-slate-200 w-auto"
@@ -62,14 +68,17 @@ export default function CardAds({ shareIndex,index,current,handlePopoverClick,pi
                 className="rounded-md filter brightness-[.3] contrast-25"
                 src={picsList && picsList[0]}
               />
-              <p className="absolute text-lg sm:text-lg mb-5 font-bold text-left ml-2 sm:ml-5 top-1/4 flex justify-center text-white">
-                Bonjour je voyage le 5/12/2024
-              </p>
-              <p className="absolute text-sm sm:text-md font-bold mt-5 ml-2 top-1/3 flex justify-center text-white text-left">
-                J'ai 5 kgs de plus à vendre contactez moi pour plus
-                d'informations ...
-              </p>
+              <div className="absolute top-1/4 left-2 sm:left-5">
+                <p className="text-lg sm:text-lg mb-2 font-bold text-left text-white">
+                  Bonjour je voyage le 5/12/2024
+                </p>
+                <p className="text-sm sm:text-md font-bold text-white text-left">
+                  J'ai 5 kgs de plus à vendre contactez moi pour plus
+                  d'informations ...
+                </p>
+              </div>
             </div>
+
             <div className="flex justify-between items-center w-full">
               <div
                 onClick={(e) => handlePopoverClick && handlePopoverClick(e)}

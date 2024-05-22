@@ -39,3 +39,16 @@ export const menuAccount = [
     link:""
   }
 ];
+
+export const bigSections = [
+  {
+    title: 'Départ',
+    description: 'Rechercher des personnes et des lieux de départ vers nos destinations les plus populaires',
+    backgroundImage: 'https://images.pexels.com/photos/912050/pexels-photo-912050.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  },
+  {
+    title: 'Départ',
+    description: 'Rechercher des personnes et des lieux de départ vers nos destinations les plus populaires',
+    backgroundImage: 'https://images.pexels.com/photos/91217/pexels-photo-91217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  },
+];

@@ -21,7 +21,7 @@ export function CustomContactPopover() {
             Contacter
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80 flex border-none flex-col gap-3 bg-white dark:bg-slate-700">
+        <PopoverContent className="w-auto flex border-none flex-col gap-3 bg-white dark:bg-slate-700">
           <p className={hoverStyle}>
             <LogosWhatsappIcon className="h-7 w-7" /> Whatsapp
           </p>

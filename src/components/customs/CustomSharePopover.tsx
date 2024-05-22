@@ -40,7 +40,7 @@ export function CustomSharePopover() {
             Partager
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80 flex border-none flex-col gap-3 bg-white dark:bg-slate-700">
+        <PopoverContent className="w-auto flex border-none flex-col gap-3 bg-white dark:bg-slate-700">
           <CopyToClipboard
             text={"this.state.value"}
             onCopy={() => setHaveCopied(true)}
