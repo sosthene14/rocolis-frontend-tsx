@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { MageDashboard4Fill, LineMdBellLoop, ArcticonsAdFree } from '../../../assets/icons/Icon';
+import {
+  MageDashboard4Fill,
+  LineMdBellLoop,
+  ArcticonsAdFree,
+} from "../../../assets/icons/Icon";
 import {
   SolarUserBold,
   StreamlineLogout1Solid,
@@ -12,24 +16,34 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 export const UserComponent = () => {
   const [isLogged] = useState(true);
 
   return (
-    <div className="text-neutral-900  outline-none mt-2 flex text-md font-semibold cursor-pointer">
+    <div className=" outline-none mt-2 flex text-md font-semibold cursor-pointer">
       {isLogged ? (
         <div>
           <DropdownMenu>
             <DropdownMenuTrigger className="outline-none">
               <SolarUserBold className="h-[2.5rem] w-[2.5rem] p-2 bg-slate-200 rounded-full" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white border-none text-black">
-            <DropdownMenuItem className="flex gap-2"><ArcticonsAdFree className="h-[1.2rem] text-black w-[1.2rem] fill-slate-700 rotate-0 scale-100 transition-all " />Mes annonces</DropdownMenuItem>
-              <DropdownMenuItem className="flex gap-2"><LineMdBellLoop className="h-[1.2rem] text-black w-[1.2rem] rotate-0 scale-100 transition-all " />Gérer les notifications</DropdownMenuItem>
-              <DropdownMenuItem className="flex gap-2"><MageDashboard4Fill className="h-[1.2rem] text-black w-[1.2rem] rotate-0 scale-100 transition-all " />Vue d'ensemble</DropdownMenuItem>
+            <DropdownMenuContent className="dark:bg-slate-700 bg-white  border-none">
+              <DropdownMenuItem className="flex gap-2">
+                <ArcticonsAdFree className="h-[1.2rem] fill-current " />
+                Mes annonces
+              </DropdownMenuItem>
+              <DropdownMenuItem className="flex gap-2">
+                <LineMdBellLoop />
+                Gérer les notifications
+              </DropdownMenuItem>
+              <DropdownMenuItem className="flex gap-2">
+                <MageDashboard4Fill  />
+                Vue d'ensemble
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="flex gap-2">
-                <StreamlineLogout1Solid className="h-[1.2rem] text-black w-[1.2rem] rotate-0 scale-100 transition-all " />
+                <StreamlineLogout1Solid  />
                 Deconnexion
               </DropdownMenuItem>
             </DropdownMenuContent>

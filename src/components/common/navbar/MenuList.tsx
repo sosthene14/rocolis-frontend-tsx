@@ -16,7 +16,7 @@ export const MenuList = ({menuNavBar}: {menuNavBar: IMenuList[]}) => {
                   : inactifUnderlineDegade
               }
             >
-              {item.text}
+              {item.label}
             </a>
           </p>
         </div>

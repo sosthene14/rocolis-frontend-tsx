@@ -13,8 +13,8 @@ export default function ImminentDeparture() {
         </p>
       </div>
       <div className="flex flex-wrap gap-5 justify-center">
-        {Array.from({ length: 5 }).map(() => (
-          <div className="basis-[20%] sm:basis-1/3 md:basis-1/3 lg:basis-1/4">
+        {Array.from({ length: 5 }).map((_,index:number) => (
+          <div key={index} className="basis-[20%] sm:basis-1/3 md:basis-1/3 lg:basis-1/4">
             <CardAds picsList={picsList} />
           </div>
         ))}

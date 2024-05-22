@@ -150,7 +150,7 @@ export function LineMdMoonLoop(props: SVGProps<SVGSVGElement>) {
       </g>
       <path
         fill="white"
-        stroke="#000000"
+        stroke="white"
         strokeDasharray={56}
         strokeDashoffset={56}
         strokeLinecap="round"
@@ -179,7 +179,7 @@ export function LineMdSunRisingFilledLoop(props: SVGProps<SVGSVGElement>) {
       color="#ffd700"
       {...props}
     >
-      <circle cx={12} cy={32} r={6} fill="#334155">
+      <circle cx={12} cy={32} r={6} fill="currentColor">
         <animate
           fill="freeze"
           attributeName="cy"
@@ -248,7 +248,7 @@ export function LineMdBellLoop(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 24 24"
       {...props}
     >
-      <g fill="#334155" stroke="#334155" strokeLinecap="round" strokeWidth={2}>
+      <g fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeWidth={2}>
         <g>
           <path strokeDasharray={4} strokeDashoffset={4} d="M12 3V5">
             <animate
@@ -318,7 +318,7 @@ export function StreamlineLogout1Solid(props: SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path
-        fill="#334155"
+        fill="currentColor"
         fillRule="evenodd"
         d="M0 1.5A1.5 1.5 0 0 1 1.5 0h7A1.5 1.5 0 0 1 10 1.5v1.939a2 2 0 0 0-.734 1.311H5.75a2.25 2.25 0 1 0 0 4.5h3.516A2 2 0 0 0 10 10.561V12.5A1.5 1.5 0 0 1 8.5 14h-7A1.5 1.5 0 0 1 0 12.5zm10.963 2.807A.75.75 0 0 0 10.5 5v1H5.75a1 1 0 0 0 0 2h4.75v1a.75.75 0 0 0 1.28.53l2-2a.75.75 0 0 0 0-1.06l-2-2a.75.75 0 0 0-.817-.163"
         clipRule="evenodd"
@@ -337,7 +337,7 @@ export function MageDashboard4Fill(props: SVGProps<SVGSVGElement>) {
       {...props}
     >
       <path
-        fill="#334155"
+        fill="currentColor"
         d="M11.01 6.625a4.16 4.16 0 0 1-.34 1.67a4.34 4.34 0 0 1-4 2.7a4.37 4.37 0 0 1-3.09-7.46a4.37 4.37 0 0 1 6.19 0a4.47 4.47 0 0 1 1.28 3.09zm10.75 0a4.33 4.33 0 0 1-.33 1.67a4.599 4.599 0 0 1-1 1.42a4.38 4.38 0 0 1-6.19 0a4.37 4.37 0 0 1 0-6.18a4.35 4.35 0 0 1 3.09-1.29a4.4 4.4 0 0 1 3.1 1.29a4.348 4.348 0 0 1 1.33 3.09m-10.75 10.75a4.16 4.16 0 0 1-.36 1.68a4.24 4.24 0 0 1-.94 1.42a4.35 4.35 0 0 1-3.1 1.28a4.37 4.37 0 0 1-3.09-7.46a4.371 4.371 0 0 1 6.19 0a4.47 4.47 0 0 1 1.28 3.09zm10.75 0a4.37 4.37 0 1 1-4.38-4.38a4.42 4.42 0 0 1 3.1 1.29a4.35 4.35 0 0 1 1.28 3.09"
       ></path>
     </svg>
@@ -356,8 +356,8 @@ export function ArcticonsAdFree(props: SVGProps<SVGSVGElement>) {
       <ellipse
         cx={33.164}
         cy={22.616}
-        fill="#334155"
-        stroke="#000000"
+        fill="currentColor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         rx={8.879}
@@ -365,15 +365,15 @@ export function ArcticonsAdFree(props: SVGProps<SVGSVGElement>) {
         transform="rotate(-21.248 33.164 22.616)"
       ></ellipse>
       <path
-        fill="#334155"
-        stroke="#334155"
+        fill="currentColor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         d="m37.026 38.831l-26.928-1.447A5.6 5.6 0 0 1 4.5 31.786c0-1.544.772-3.089 1.737-4.15L25.444 7.657"
       ></path>
       <path
-        fill="#334155"
-        stroke="#000000"
+        fill="currentColor"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M19.46 37.866c-1.93-.193-4.536-3.185-6.177-7.431c-1.64-4.15-1.737-8.011-.58-9.555m26.349 0l-9.555 8.3c2.8 4.922 6.37 7.818 8.88 6.853c3.088-1.255 3.378-8.011.675-15.153m-1.64-3.764l-9.652 8.396a7 7 0 0 1-.29-.772c-2.895-7.431-2.605-14.38.483-15.635c2.703-.965 6.563 2.51 9.459 8.01ZM19.942 38.06c0 2.026-1.64 3.57-3.764 3.57s-3.764-1.544-3.764-3.474v-.483"

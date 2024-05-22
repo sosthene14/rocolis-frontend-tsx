@@ -13,7 +13,7 @@ export function ModeToggle() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className="outline-none">
+      <DropdownMenuTrigger asChild className="focus-visible:ring-transparent">
         <Button className="outline-none border-none" variant={null} size="icon">
           <LineMdSunRisingFilledLoop className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <LineMdMoonLoop className="absolute h-[1.2rem]  w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
