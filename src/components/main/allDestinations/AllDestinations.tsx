@@ -1,8 +1,8 @@
 import {
-  gradientBtn,
   subTitlesClassNames,
   titleClassNames,
 } from "@/common/ClassNames";
+import SeeMoreBtn from "@/components/common/button/SeeMoreBtn";
 import { destinationsDatas } from "@/constants/variables";
 
 export const AllDestinations = () => {
@@ -49,9 +49,7 @@ export const AllDestinations = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-12 mb-12">
-        <button className={gradientBtn}>Voir plus de destinations</button>
-      </div>
+      <SeeMoreBtn child="Voir plus de destinations" /> 
     </div>
   );
 };
