@@ -3,7 +3,7 @@ import CardAds from "@/components/common/cardsAds/CardAds";
 import { picsList } from "@/assets/images/Images";
 import SeeMoreBtn from "@/components/common/button/SeeMoreBtn";
 
-export default function IminentDeparture() {
+export default function ImminentDeparture() {
   return (
     <div className="flex-col items-center">
       <div className="flex justify-center flex-col items-center">

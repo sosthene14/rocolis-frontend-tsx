@@ -22,7 +22,7 @@ export const AllDestinations = () => {
         {destinationsDatas.map((data, index) => (
           <div
             key={index}
-            className="p-3 hover:bg-slate-200 transition-all text-neutral-900 duration-100 bg-slate-100 dark:text-white dark:hover:bg-slate-700 dark:bg-slate-500 rounded-2xl w-[300px] shadow justify-center items-center gap-4 flex mt-10 cursor-pointer"
+            className="p-3 hover:bg-slate-200 transition-all text-neutral-900 duration-100 bg-slate-100 dark:text-white dark:hover:bg-slate-700 dark:bg-slate-600 rounded-2xl w-[300px] shadow justify-center items-center gap-4 flex mt-10 cursor-pointer"
           >
             <div className="w-[90px] h-[90px] flex-col justify-start items-center inline-flex">
               <img
