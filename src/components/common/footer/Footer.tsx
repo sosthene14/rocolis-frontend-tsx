@@ -33,23 +33,27 @@ export const Footer = () => {
         <p className="text-gray-300 mb-10 text-[1.5rem] font-bold font-['Raleway']">
           {"S'inscrire à la Newsletter"}
         </p>
-        <form className="flex justify-center  items-center">
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            type="email"
-            autoComplete="on"
-            required
-            placeholder="Entrer votre adresse Email"
-            className="h-[50px] w-[250px] -ml-[100px] sm:ml-0 md:w-[400px] text-slate-400 pl-5 bg-blue-600 bg-opacity-10 rounded-[50px] border border-teal-300 border-opacity-50 backdrop-blur-[25px] focus:outline-none"
-          />
-          <button
-            type="submit"
-            className="absolute h-[52px] w-[150px] ml-[220px] md:-ml-20 md:relative px-[30px] py-4 bg-gradient-to-r from-slate-500 to-blue-950 rounded-[50px] border border-teal-300 border-opacity-50 text-white text-base font-bold font-['Raleway']"
-          >
-            {"S'abonner"}
-          </button>
-        </form>
+        <form >
+              <div className="w-full justify-center items-center flex " >
+                <input
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  value={email}
+                  type="email"
+                  autoComplete="on"
+                
+                  required
+                  placeholder="Entrer votre adresse Email"
+                  className="h-[50px] w-[250px] mr-[80px] md:mr-0 md:w-[400px] text-slate-400 relative left-0 top-0 pl-5  bg-blue-600 bg-opacity-10 rounded-[50px] border border-teal-300 border-opacity-50 backdrop-blur-[25px] focus:border-none focus:outline-none"
+                />
+                <button type="submit" className="mr-[140px] md:mr-0 ml-[320px] absolute h-[52px] w-[150px] px-[30px] py-4 bg-gradient-to-r from-slate-500 to-blue-950 rounded-[50px] border border-teal-300 border-opacity-50 justify-center items-center gap-2.5 inline-flex">
+                  <div className="text-white text-base font-bold font-['Raleway']">
+                    {"S'abonner"}
+                  </div>
+                </button>
+              </div>
+            </form>
       </div>
 
       <div className="flex flex-wrap-reverse justify-center items-center gap-[90px] pb-[20px]">

@@ -13,7 +13,7 @@ export const BigDepDesSection = () => {
   ];
 
   return (
-    <div className="flex flex-col mx-10 sm:mx-0 items-center gap-10 lg:mx-20 lg:gap-20 lg:flex-row justify-center mt-20 mb-20">
+    <div className="flex flex-col mx-5 sm:mx-10 items-center gap-10 lg:mx-20 lg:gap-20 lg:flex-row justify-center mt-20 mb-20">
       {sections.map((section, index) => (
         <div
           key={index}
