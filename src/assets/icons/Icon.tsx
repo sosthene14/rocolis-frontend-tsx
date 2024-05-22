@@ -398,3 +398,223 @@ export function TypcnDelete(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function SolarShareBold(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M13.803 5.333c0-1.84 1.5-3.333 3.348-3.333A3.341 3.341 0 0 1 20.5 5.333c0 1.841-1.5 3.334-3.349 3.334a3.346 3.346 0 0 1-2.384-.994l-4.635 3.156a3.336 3.336 0 0 1-.182 1.917l5.082 3.34a3.346 3.346 0 0 1 2.12-.753a3.341 3.341 0 0 1 3.348 3.334C20.5 20.507 19 22 17.151 22a3.341 3.341 0 0 1-3.348-3.333a3.3 3.3 0 0 1 .289-1.356L9.05 14a3.346 3.346 0 0 1-2.202.821A3.34 3.34 0 0 1 3.5 11.487a3.34 3.34 0 0 1 3.348-3.333c1.064 0 2.01.493 2.623 1.261l4.493-3.059a3.317 3.317 0 0 1-.161-1.023"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+}
+
+export function MeteoconsStarFill(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 512 512"
+      {...props}
+    >
+      <defs>
+        <linearGradient
+          id="meteoconsStarFill0"
+          x1={187.9}
+          x2={324.1}
+          y1={138.1}
+          y2={373.9}
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset={0} stopColor="#fcd966"></stop>
+          <stop offset={0.5} stopColor="#fcd966"></stop>
+          <stop offset={1} stopColor="#fccd34"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        fill="url(#meteoconsStarFill0)"
+        stroke="#fcd34d"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={4}
+        d="m105.7 263.5l107.5 29.9a7.9 7.9 0 0 1 5.4 5.4l29.9 107.5a7.8 7.8 0 0 0 15 0l29.9-107.5a7.9 7.9 0 0 1 5.4-5.4l107.5-29.9a7.8 7.8 0 0 0 0-15l-107.5-29.9a7.9 7.9 0 0 1-5.4-5.4l-29.9-107.5a7.8 7.8 0 0 0-15 0l-29.9 107.5a7.9 7.9 0 0 1-5.4 5.4l-107.5 29.9a7.8 7.8 0 0 0 0 15Z"
+      >
+        <animateTransform
+          additive="sum"
+          attributeName="transform"
+          calcMode="spline"
+          dur="6s"
+          keySplines=".42, 0, .58, 1; .42, 0, .58, 1"
+          repeatCount="indefinite"
+          type="rotate"
+          values="-15 256 256; 15 256 256; -15 256 256"
+        ></animateTransform>
+        <animate
+          attributeName="opacity"
+          dur="6s"
+          values="1; .75; 1; .75; 1; .75; 1"
+        ></animate>
+      </path>
+    </svg>
+  );
+}
+
+export function LogosWhatsappIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 256 258"
+      {...props}
+    >
+      <defs>
+        <linearGradient
+          id="logosWhatsappIcon0"
+          x1="50%"
+          x2="50%"
+          y1="100%"
+          y2="0%"
+        >
+          <stop offset="0%" stopColor="#1faf38"></stop>
+          <stop offset="100%" stopColor="#60d669"></stop>
+        </linearGradient>
+        <linearGradient
+          id="logosWhatsappIcon1"
+          x1="50%"
+          x2="50%"
+          y1="100%"
+          y2="0%"
+        >
+          <stop offset="0%" stopColor="#f9f9f9"></stop>
+          <stop offset="100%" stopColor="#fff"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        fill="url(#logosWhatsappIcon0)"
+        d="M5.463 127.456c-.006 21.677 5.658 42.843 16.428 61.499L4.433 252.697l65.232-17.104a122.994 122.994 0 0 0 58.8 14.97h.054c67.815 0 123.018-55.183 123.047-123.01c.013-32.867-12.775-63.773-36.009-87.025c-23.23-23.25-54.125-36.061-87.043-36.076c-67.823 0-123.022 55.18-123.05 123.004"
+      ></path>
+      <path
+        fill="url(#logosWhatsappIcon1)"
+        d="M1.07 127.416c-.007 22.457 5.86 44.38 17.014 63.704L0 257.147l67.571-17.717c18.618 10.151 39.58 15.503 60.91 15.511h.055c70.248 0 127.434-57.168 127.464-127.423c.012-34.048-13.236-66.065-37.3-90.15C194.633 13.286 162.633.014 128.536 0C58.276 0 1.099 57.16 1.071 127.416m40.24 60.376l-2.523-4.005c-10.606-16.864-16.204-36.352-16.196-56.363C22.614 69.029 70.138 21.52 128.576 21.52c28.3.012 54.896 11.044 74.9 31.06c20.003 20.018 31.01 46.628 31.003 74.93c-.026 58.395-47.551 105.91-105.943 105.91h-.042c-19.013-.01-37.66-5.116-53.922-14.765l-3.87-2.295l-40.098 10.513z"
+      ></path>
+      <path
+        fill="#fff"
+        d="M96.678 74.148c-2.386-5.303-4.897-5.41-7.166-5.503c-1.858-.08-3.982-.074-6.104-.074c-2.124 0-5.575.799-8.492 3.984c-2.92 3.188-11.148 10.892-11.148 26.561c0 15.67 11.413 30.813 13.004 32.94c1.593 2.123 22.033 35.307 54.405 48.073c26.904 10.609 32.379 8.499 38.218 7.967c5.84-.53 18.844-7.702 21.497-15.139c2.655-7.436 2.655-13.81 1.859-15.142c-.796-1.327-2.92-2.124-6.105-3.716c-3.186-1.593-18.844-9.298-21.763-10.361c-2.92-1.062-5.043-1.592-7.167 1.597c-2.124 3.184-8.223 10.356-10.082 12.48c-1.857 2.129-3.716 2.394-6.9.801c-3.187-1.598-13.444-4.957-25.613-15.806c-9.468-8.442-15.86-18.867-17.718-22.056c-1.858-3.184-.199-4.91 1.398-6.497c1.431-1.427 3.186-3.719 4.78-5.578c1.588-1.86 2.118-3.187 3.18-5.311c1.063-2.126.531-3.986-.264-5.579c-.798-1.593-6.987-17.343-9.819-23.64"
+      ></path>
+    </svg>
+  );
+}
+
+export function LineMdPhoneCallLoop(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <g
+        fill="currentColor"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+      >
+        <path
+          strokeDasharray={64}
+          strokeDashoffset={64}
+          d="M8 3C8.5 3 10.5 7.5 10.5 8C10.5 9 9 10 8.5 11C8 12 9 13 10 14C10.3943 14.3943 12 16 13 15.5C14 15 15 13.5 16 13.5C16.5 13.5 21 15.5 21 16C21 18 19.5 19.5 18 20C16.5 20.5 15.5 20.5 13.5 20C11.5 19.5 10 19 7.5 16.5C5 14 4.5 12.5 4 10.5C3.5 8.5 3.5 7.5 4 6C4.5 4.5 6 3 8 3Z"
+        >
+          <animate
+            fill="freeze"
+            attributeName="stroke-dashoffset"
+            dur="0.6s"
+            values="64;0"
+          ></animate>
+          <animateTransform
+            attributeName="transform"
+            begin="0.6s;lineMdPhoneCallLoop0.begin+2.6s"
+            dur="0.5s"
+            type="rotate"
+            values="0 12 12;15 12 12;0 12 12;-12 12 12;0 12 12;12 12 12;0 12 12;-15 12 12;0 12 12"
+          ></animateTransform>
+        </path>
+        <path
+          strokeDasharray={4}
+          strokeDashoffset={4}
+          d="M14 7.04404C14.6608 7.34734 15.2571 7.76718 15.7624 8.27723M16.956 10C16.6606 9.35636 16.2546 8.77401 15.7624 8.27723"
+          opacity={0}
+        >
+          <set
+            id="lineMdPhoneCallLoop0"
+            attributeName="opacity"
+            begin="0.7s;lineMdPhoneCallLoop0.begin+2.7s"
+            to={1}
+          ></set>
+          <animate
+            fill="freeze"
+            attributeName="stroke-dashoffset"
+            begin="0.7s;lineMdPhoneCallLoop0.begin+2.7s"
+            dur="0.2s"
+            values="4;8"
+          ></animate>
+          <animate
+            fill="freeze"
+            attributeName="stroke-dashoffset"
+            begin="1.3s;lineMdPhoneCallLoop0.begin+3.3s"
+            dur="0.3s"
+            values="0;4"
+          ></animate>
+          <set
+            attributeName="opacity"
+            begin="1.6s;lineMdPhoneCallLoop0.begin+3.6s"
+            to={0}
+          ></set>
+        </path>
+        <path
+          strokeDasharray={10}
+          strokeDashoffset={10}
+          d="M20.748 9C20.3874 7.59926 19.6571 6.347 18.6672 5.3535M15 3.25203C16.4105 3.61507 17.6704 4.3531 18.6672 5.3535"
+          opacity={0}
+        >
+          <set
+            attributeName="opacity"
+            begin="1s;lineMdPhoneCallLoop0.begin+3s"
+            to={1}
+          ></set>
+          <animate
+            fill="freeze"
+            attributeName="stroke-dashoffset"
+            begin="1s;lineMdPhoneCallLoop0.begin+3s"
+            dur="0.2s"
+            values="10;20"
+          ></animate>
+          <animate
+            fill="freeze"
+            attributeName="stroke-dashoffset"
+            begin="1.5s;lineMdPhoneCallLoop0.begin+3.5s"
+            dur="0.3s"
+            values="0;10"
+          ></animate>
+          <set
+            attributeName="opacity"
+            begin="1.8s;lineMdPhoneCallLoop0.begin+3.8s"
+            to={0}
+          ></set>
+        </path>
+      </g>
+    </svg>
+  );
+}

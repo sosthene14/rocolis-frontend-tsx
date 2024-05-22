@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoutes from "./routes/privateRoutes";
 import Login from "./components/main/login/Login";
 import PublishAdsExpeditor from "./components/main/publishAds/PublishAdsExpeditor";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

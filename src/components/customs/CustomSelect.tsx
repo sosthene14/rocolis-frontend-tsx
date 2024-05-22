@@ -114,7 +114,7 @@ export function CustomSelect({
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[250px] p-0">
-        <Command>
+        <Command className="bg-white">
           <CommandInput
             className="pb-2 my-2"
             placeholder={`Ville ${cityType}`}
@@ -124,7 +124,7 @@ export function CustomSelect({
             <CommandList>
               {frameworks.map((option) => (
                 <CommandItem
-                  className="text-sm font-['Montserrat'] text-left font-bold text-zinc-900 text-opacity-60"
+                  className="text-sm  font-['Montserrat'] text-left font-bold text-zinc-900 text-opacity-60"
                   key={option.value}
                   value={option.value}
                   onSelect={(currentValue) => {

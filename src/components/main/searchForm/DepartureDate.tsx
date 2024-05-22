@@ -21,13 +21,13 @@ export default function DepartureDate() {
       <form>
         <div className="relative flex items-center">
           <CustomDatePicker
-            className="border-2 font-bold outline-none border-gray-300 py-3 rounded-md placeholder:text-zinc-900 text-zinc-900 text-opacity-60 text-sm font-['Montserrat']"
+            className="border-2 cursor-pointer hover:bg-slate-200 font-bold bg-white dark:bg-slate-200 outline-none border-slate-200 py-3 rounded-md placeholder:text-zinc-900 text-zinc-900 text-opacity-60 text-sm font-['Montserrat']"
             placeholder="Date de départ"
             minDate={minDate}
             defaultValue={
               isDateValide ? (formatedDayjs as unknown as Date) : undefined
             }
-            onChange={(date: Date, dateString: string | string[]) =>
+            onChange={(_date: Date, dateString: string | string[]) =>
               _setDate(unslashedFormatedDate(String(dateString)))
             }
           />
