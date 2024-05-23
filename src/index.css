@@ -9,6 +9,9 @@
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
 
+      --placeholder-color-light: #666; /* Couleur du placeholder en mode clair */
+      --placeholder-color-dark: #ccc; 
+
       --card: 0 0% 100%;
       --card-foreground: 222.2 84% 4.9%;
 
@@ -76,3 +79,15 @@
       @apply bg-background text-foreground;
     }
   }
+
+  /* styles.css */
+.custom-datepicker .ant-picker-input > input::placeholder {
+  color: rgb(209 213 219);
+ 
+ 
+}
+
+.custom-datepicker-2 .ant-picker-input > input::placeholder {
+  opacity: 0.6; /* Changer l'opacité à 0.6 */
+  color: black; /* Facultatif : changer la couleur du placeholder si nécessaire */
+}

@@ -23,7 +23,7 @@ import { NavLink } from "react-router-dom";
 import { ReactNode, useState } from "react";
 import { menuAccount, menuNavBar } from "../../../constants/links";
 
-export function Dropdown() {
+export const Dropdown = () => {
     const [isOpen, setIsOpen] = useState(false)
 
     const onDropdownChange = () =>{

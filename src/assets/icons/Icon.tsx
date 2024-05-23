@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-export function HouseIcon(props: SVGProps<SVGSVGElement>) {
+export const HouseIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ export function HouseIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function PlaneIcon(props: SVGProps<SVGSVGElement>) {
+export const PlaneIcon = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ export function PlaneIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function ContactIcon(props: SVGProps<SVGSVGElement>) {
+export const ContactIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ export function ContactIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function SolarUserBold(props: SVGProps<SVGSVGElement>) {
+export const SolarUserBold = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@ export function SolarUserBold(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function LineMdMoonLoop(props: SVGProps<SVGSVGElement>) {
+export const LineMdMoonLoop = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +169,7 @@ export function LineMdMoonLoop(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function LineMdSunRisingFilledLoop(props: SVGProps<SVGSVGElement>) {
+export const LineMdSunRisingFilledLoop = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -239,7 +239,7 @@ export function LineMdSunRisingFilledLoop(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function LineMdBellLoop(props: SVGProps<SVGSVGElement>) {
+export const LineMdBellLoop = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -308,7 +308,7 @@ export function LineMdBellLoop(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function StreamlineLogout1Solid(props: SVGProps<SVGSVGElement>) {
+export const StreamlineLogout1Solid = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -327,7 +327,7 @@ export function StreamlineLogout1Solid(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function MageDashboard4Fill(props: SVGProps<SVGSVGElement>) {
+export const MageDashboard4Fill = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -344,7 +344,7 @@ export function MageDashboard4Fill(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function ArcticonsAdFree(props: SVGProps<SVGSVGElement>) {
+export const ArcticonsAdFree = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -382,7 +382,7 @@ export function ArcticonsAdFree(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function TypcnDelete(props: SVGProps<SVGSVGElement>) {
+export const TypcnDelete = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -399,7 +399,7 @@ export function TypcnDelete(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function SolarShareBold(props: SVGProps<SVGSVGElement>) {
+export const SolarShareBold = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -418,7 +418,7 @@ export function SolarShareBold(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function MeteoconsStarFill(props: SVGProps<SVGSVGElement>) {
+export const MeteoconsStarFill = (props: SVGProps<SVGSVGElement>)=> {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -469,7 +469,7 @@ export function MeteoconsStarFill(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function LogosWhatsappIcon(props: SVGProps<SVGSVGElement>) {
+export const LogosWhatsappIcon = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -516,7 +516,7 @@ export function LogosWhatsappIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function LineMdPhoneCallLoop(props: SVGProps<SVGSVGElement>) {
+export const LineMdPhoneCallLoop = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -619,7 +619,7 @@ export function LineMdPhoneCallLoop(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function IconParkOutlineLeftC(props: SVGProps<SVGSVGElement>) {
+export const IconParkOutlineLeftC = (props: SVGProps<SVGSVGElement>) =>{
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

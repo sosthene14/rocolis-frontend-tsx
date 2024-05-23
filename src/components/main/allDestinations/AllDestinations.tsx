@@ -2,7 +2,7 @@ import {
   subTitlesClassNames,
   titleClassNames,
 } from "@/common/ClassNames";
-import SeeMoreBtn from "@/components/common/button/SeeMoreBtn";
+import {SeeMoreBtn} from "@/components/common/button/SeeMoreBtn";
 import { destinationsDatas } from "@/constants/variables";
 
 export const AllDestinations = () => {
@@ -18,7 +18,7 @@ export const AllDestinations = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap justify-center items-start gap-0 sm:gap-10 mt-10">
+      <div className="flex flex-wrap justify-center items-start gap-0 sm:gap-10 ">
         {destinationsDatas.map((data, index) => (
           <div
             key={index}

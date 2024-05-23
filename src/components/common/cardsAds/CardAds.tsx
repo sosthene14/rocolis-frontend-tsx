@@ -11,24 +11,24 @@ interface IProps {
   picsList?: string[];
 }
 
-export default function CardAds({
+export const CardAds =({
   shareIndex,
   index,
   current,
   handlePopoverClick,
   picsList,
-}: IProps) {
+}: IProps)=> {
   return (
-    <div className="p-2 w-full">
+    <div className="p-2 w-full ">
       <div
         onClick={() => shareIndex && index && shareIndex(index)}
-        className={`w-[21rem] sm:w-full  cursor-pointer ${
+        className={`w-[21rem] sm:w-full   cursor-pointer ${
           current && index === current - 1
             ? "bg-slate-200 dark:bg-slate-600"
-            : "bg-white dark:bg-slate-700"
-        } mx-auto shadow-md rounded-lg`}
+            : "bg-slate-100 dark:bg-slate-700"
+        } mx-auto shadow-md  rounded-lg`}
       >
-        <div className="flex flex-col w-full items-center justify-center p-4 sm:p-6">
+        <div className="flex flex-col w-full transition-colors duration-300 transform dark:hover:bg-slate-600 items-center justify-center p-4 sm:p-6">
           <div className="flex gap-3 sm:gap-5 flex-col w-full">
             <div className="flex justify-between items-center w-full mb-2 sm:mb-4">
               <div className="flex flex-col">

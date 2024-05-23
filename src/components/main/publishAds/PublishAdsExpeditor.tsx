@@ -1,5 +1,5 @@
 
-export default function PublishAdsExpeditor() {
+export const PublishAdsExpeditor = () => {
   return (
     <div>PublishAdsExpeditor</div>
   )

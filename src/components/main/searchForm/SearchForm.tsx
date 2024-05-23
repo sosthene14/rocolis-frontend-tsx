@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import Departure from "./Departure";
-import DepartureDate from "./DepartureDate";
-import Destination from "./Destination";
+import {Departure} from "./Departure";
+import {DepartureDate} from "./DepartureDate";
+import {Destination} from "./Destination";
 import {
   useDatePickerStore,
   useDepartureStore,
@@ -11,7 +11,7 @@ import { PlaneIcon } from "@/assets/icons/Icon";
 import { gradientBtn } from "@/common/ClassNames";
 import { checkDateFormat } from "@/lib/utils";
 
-export default function SearchForm() {
+export const SearchForm = () => {
   const { date, _setDate } = useDatePickerStore();
   const { departure, setErrorDeparture } = useDepartureStore();
   const { destination, setErrorDestination } = useDestinationStore();

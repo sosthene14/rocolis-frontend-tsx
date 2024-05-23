@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import { Dropdown } from "./DropdownMenu";
 import { UserComponent } from "./UserComponent";
 
-export default function NavBar() {
+export const NavBar = () => {
   const userRole = "expeditor";
 
   return (

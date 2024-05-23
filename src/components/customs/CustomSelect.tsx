@@ -20,29 +20,9 @@ import {
 } from "@/components/ui/popover";
 import { TypcnDelete } from "@/assets/icons/Icon";
 import { useDepartureStore, useDestinationStore } from "@/store/store";
+import { frameworks } from "@/constants/variables";
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
+
 
 interface CustomSelectProps {
   defaultvalue: string;
@@ -50,6 +30,10 @@ interface CustomSelectProps {
   cityType: string;
   className?: string;
   label?: string;
+  disabled?:boolean;
+  notFoundText?: string;
+  classNamePopover?: string;
+  classNameInput?: string;
 }
 
 export function CustomSelect({
@@ -57,7 +41,11 @@ export function CustomSelect({
   onChange,
   cityType,
   className,
+  notFoundText,
   label,
+  classNamePopover ="w-[250px] p-0",
+  classNameInput="pb-2 my-2 text-slate-800 text-sm ",
+  disabled
 }: CustomSelectProps) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
@@ -92,18 +80,17 @@ export function CustomSelect({
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+    <Popover  open={open} onOpenChange={setOpen}>
+      <PopoverTrigger disabled={disabled} asChild>
         <Button
-    
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={className}
+          className={`${className}`}
         >
           {value
             ? frameworks.find((framework) => framework.value === value)?.label
-            : "Ville " + cityType}
+            : cityType}
           <div className="flex item-center gap-1">
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             <TypcnDelete
@@ -113,13 +100,13 @@ export function CustomSelect({
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[250px] p-0">
-        <Command className="bg-white">
+      <PopoverContent className={classNamePopover}>
+        <Command className="bg-white ">
           <CommandInput
-            className="pb-2 my-2 text-slate-800 text-sm "
-            placeholder={`Ville ${cityType}`}
+            className={classNameInput}
+            placeholder={cityType}
           />
-          <CommandEmpty className="text-slate-800 text-sm text-center">Cette ville n'est pas encore disponible</CommandEmpty>
+          <CommandEmpty className="text-slate-800 text-sm text-center">{notFoundText}</CommandEmpty>
           <CommandGroup className="mt-3">
             <CommandList>
               {frameworks.map((option) => (

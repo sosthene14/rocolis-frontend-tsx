@@ -1,5 +1,5 @@
 
-export default function UserAdsTraveler() {
+export const UserAdsTraveler = () => {
   return (
     <div>UserAdsTraveler</div>
   )

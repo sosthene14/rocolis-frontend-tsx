@@ -2,9 +2,10 @@ import { CustomSelect } from "@/components/customs/CustomSelect";
 import { useEffect, useState } from "react";
 import { useDepartureStore } from "@/store/store";
 
-export default function Departure() {
+export const Departure = () => {
   const [departure, setDeparture] = useState("");
-  const { _setDeparture, errorDeparture,setErrorDeparture } = useDepartureStore();
+  const { _setDeparture, errorDeparture, setErrorDeparture } =
+    useDepartureStore();
   const onChange = (value: string) => {
     _setDeparture(value);
   };
@@ -22,10 +23,11 @@ export default function Departure() {
       >
         {"Ville de départ"}
       </label>
-      <div onClick={()=>setErrorDeparture(false)}>
+      <div onClick={() => setErrorDeparture(false)}>
         <CustomSelect
+          notFoundText={`la ville ${departure} n'est pas disponnible`}
           label="departure"
-          cityType="de départ"
+          cityType="ville de départ"
           defaultvalue={departure}
           onChange={onChange}
           className={`${errorDeparture ? "border-red-400" : "border-slate-200"}
@@ -34,4 +36,4 @@ export default function Departure() {
       </div>
     </div>
   );
-}
+};

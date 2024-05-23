@@ -1,5 +1,5 @@
 
-export default function UserAds() {
+export const UserAds = ()=> {
   return (
     <div>UserAds</div>
   )

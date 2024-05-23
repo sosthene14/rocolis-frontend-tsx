@@ -1,12 +1,14 @@
 import dayjs, { Dayjs } from "dayjs";
-import { DatePicker } from "antd";
-
+import { ConfigProvider, DatePicker } from "antd";
+import locale from "antd/locale/fr_FR";
 import { LegacyRef } from "react";
 import type { PickerRef } from "rc-picker";
 const dateFormat = "DD/MM/YYYY";
 const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY", "DD-MM-YYYY", "DD-MM-YY"];
 type DisabledDate<T> = (current: T) => boolean;
+import "dayjs/locale/fr";
 
+dayjs.locale("fr");
 interface IProps {
   ref?: LegacyRef<PickerRef>;
   required?: boolean;
@@ -17,9 +19,10 @@ interface IProps {
   onChange?: (date: Date, dateString: string | string[]) => void;
   minDate?: string;
   className?: string;
+  placement?: "topRight" | "bottomLeft" | "bottomRight" | "topLeft";
 }
 
-export default function CustomDatePicker({
+export const CustomDatePicker = ({
   ref,
   required,
   disabled: disabledState,
@@ -27,12 +30,15 @@ export default function CustomDatePicker({
   placeholder,
   disabledDate,
   onChange,
+  placement="topRight",
   minDate,
   className,
-}: IProps) {
+}: IProps) => {
   return (
-    <div>
+    <ConfigProvider locale={locale}>
       <DatePicker
+      
+        placement={placement}
         ref={ref}
         required={required}
         disabled={disabledState}
@@ -42,8 +48,8 @@ export default function CustomDatePicker({
         disabledDate={disabledDate}
         onChange={onChange}
         minDate={dayjs(minDate, dateFormat)}
-        className={className}
+        className={`${className}`}
       />
-    </div>
+    </ConfigProvider>
   );
-}
+};

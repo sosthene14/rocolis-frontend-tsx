@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { picsList } from "@/assets/images/Images";
 import { ToastContainer } from "react-toastify";
-import CardAds from "../common/cardsAds/CardAds";
+import {CardAds} from "../common/cardsAds/CardAds";
 
 export function CustomCarousel() {
   const [api, setApi] = useState<CarouselApi>();

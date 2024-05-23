@@ -1,7 +1,7 @@
 import { CustomSelect } from "@/components/customs/CustomSelect";
 import { useEffect, useState } from "react";
 import { useDestinationStore } from "@/store/store";
-export default function Destination() {
+export const Destination = () =>{
   const [destination, setDestination] = useState("");
   const { _setDestination, errorDestination, setErrorDestination } =
     useDestinationStore();
@@ -18,7 +18,8 @@ export default function Destination() {
       <div onClick={() => setErrorDestination(false)}>
         <CustomSelect
           label="destination"
-          cityType="d'arrivée"
+          notFoundText={`la ville ${destination} n'est pas disponnible`}
+          cityType="ville d'arrivée"
           defaultvalue={destination}
           onChange={onChange}
           className={`${errorDestination ? "border-red-400" : "border-slate-200"}
