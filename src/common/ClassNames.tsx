@@ -96,7 +96,7 @@ export const HeroBackgroundStyle = {
 
 export const titleClassNames = "text-3xl text-center mb-10 font-bold dark:text-white text-slate-600"
 export const subTitlesClassNames = "text-xl  mx-5 text-center mb-10 font-bold dark:text-white text-slate-600"
-export const publishAddInputStyle = " dark:bg-slate-600 dark:text-gray-300 placeholder:text-gray-300 focus:ring-0 flex focus:border-blue-200 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-blue-300 w-[280px] md:w-[380px] transition-duration: 75ms outline-none p-3 rounded-sm bg-white opacity-60 text-opacity-10 dark:opacity-100 text-sm font-normal font-['Poppins']"
+export const publishAddInputStyle = " dark:bg-slate-600 text-black dark:text-gray-300 placeholder:text-gray-300 focus:ring-0 flex focus:border-blue-200 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-blue-300 w-[280px] md:w-[380px] transition-duration: 75ms outline-none p-3 rounded-sm bg-white opacity-60 text-opacity-60 dark:opacity-100 text-sm font-normal font-['Poppins']"
 export const publishAddTextarea = "focus:ring-0 flex dark:bg-slate-600 dark:text-white placeholder:text-gray-300	 focus:border-blue-200 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-blue-300 w-full transition-duration: 75ms outline-none p-3 rounded-sm bg-white opacity-60 dark:opacity-100 text-opacity-10 text-sm font-normal font-['Poppins']"
-export const popoverClass = "w-[280px] md:w-[380px]"
+export const popoverClass = "w-[280px] md:w-[380px] bg-white"
 export const publishAddLabel = "block mb-2 text-sm font-medium text-gray-500 dark:text-gray-100"

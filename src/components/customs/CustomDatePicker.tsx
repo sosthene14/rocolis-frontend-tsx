@@ -18,6 +18,7 @@ interface IProps {
   disabledDate?: DisabledDate<Dayjs>;
   onChange?: (date: Date, dateString: string | string[]) => void;
   minDate?: string;
+  maxDate?:string;
   className?: string;
   placement?: "topRight" | "bottomLeft" | "bottomRight" | "topLeft";
 }
@@ -32,12 +33,13 @@ export const CustomDatePicker = ({
   onChange,
   placement="topRight",
   minDate,
+  maxDate,
   className,
 }: IProps) => {
   return (
     <ConfigProvider locale={locale}>
       <DatePicker
-      
+      suffixIcon={null}
         placement={placement}
         ref={ref}
         required={required}
@@ -48,6 +50,7 @@ export const CustomDatePicker = ({
         disabledDate={disabledDate}
         onChange={onChange}
         minDate={dayjs(minDate, dateFormat)}
+        maxDate={dayjs(maxDate, dateFormat)}
         className={`${className}`}
       />
     </ConfigProvider>

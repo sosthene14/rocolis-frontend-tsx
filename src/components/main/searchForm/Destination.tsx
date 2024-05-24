@@ -18,7 +18,8 @@ export const Destination = () =>{
       <div onClick={() => setErrorDestination(false)}>
         <CustomSelect
           label="destination"
-          notFoundText={`la ville ${destination} n'est pas disponnible`}
+          classNameInput="mr-6 my-4 text-gray-500"
+          notFoundText={`cette ville n'est pas disponnible`}
           cityType="ville d'arrivée"
           defaultvalue={destination}
           onChange={onChange}

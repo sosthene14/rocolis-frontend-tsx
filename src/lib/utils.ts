@@ -7,13 +7,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getCountryFullname = (countryCode: string) => {
-  try {
-    return countryList().getLabel(countryCode);
-  } catch (error) {
-    console.error("Error getting country name:", error);
-  }
-};
+
 
 export const getCurrentDateSlashFormat = () => {
   const currentDate = new Date();
@@ -30,14 +24,14 @@ export const isDateValidSlashed = (dateString: string) => {
 
 export const isDateValidUnslashed = (dateString: string) => {
   return dayjs(dateString, "YYYY-MM-DD", true).isValid();
-}
+};
 
 export const slashedFormatedDate = (dateString: string) => {
   try {
     const [year, month, day] = dateString.split("-");
     return `${day}/${month}/${year}`;
   } catch (error) {
-    return null
+    return null;
   }
 };
 
@@ -54,17 +48,81 @@ export const unslashedFormatedDate = (dateString: string) => {
 };
 
 export const formatedDayJsDate = (date: string) => {
-  const dateFormat = 'DD/MM/YYYY';
-  return dayjs(slashedFormatedDate(date),dateFormat)
-}
+  const dateFormat = "DD/MM/YYYY";
+  return dayjs(slashedFormatedDate(date), dateFormat);
+};
 
-export const checkDateFormat = (dateString: string): { isLongDate: boolean } => {
+export const checkDateFormat = (
+  dateString: string
+): { isLongDate: boolean } => {
   const longDateFormat = /^[A-Za-z]{3} [A-Za-z]{3} \d{2} \d{4}$/;
   let isLongDate = longDateFormat.test(dateString);
 
-  if (dateString === "undefined-undefined-"){
-      isLongDate = true
+  if (dateString === "undefined-undefined-") {
+    isLongDate = true;
   }
 
-  return {isLongDate};
+  return { isLongDate };
+};
+
+export const addOneDay = (dateString: string) => {
+  try {
+    const [day, month, year] = dateString.split("/").map(Number);
+    const date = new Date(year, month - 1, day);
+    if (isNaN(date.getTime())) {
+      throw new Error("Invalid date");
+    }
+    date.setDate(date.getDate() + 1);
+    const newDay = date.getDate().toString().padStart(2, "0");
+    const newMonth = (date.getMonth() + 1).toString().padStart(2, "0");
+    const newYear = date.getFullYear();
+    return `${newDay}/${newMonth}/${newYear}`;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const removeOneDay = (dateString: string) => {
+  try {
+    const [day, month, year] = dateString.split("/").map(Number);
+    const date = new Date(year, month - 1, day);
+    date.setDate(date.getDate() - 1);
+    const newDay = date.getDate().toString().padStart(2, "0");
+    const newMonth = (date.getMonth() + 1).toString().padStart(2, "0");
+    const newYear = date.getFullYear();
+    return `${newDay}/${newMonth}/${newYear}`;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const compareDates = (
+  dateString1: string,
+  dateString2: string
+): number => {
+  const convertDate = (dateString: string) => {
+    const [day, month, year] = dateString.split("/").map(Number);
+    return new Date(year, month - 1, day).toISOString().split("T")[0];
+  };
+
+  const date1 = convertDate(dateString1);
+  const date2 = convertDate(dateString2);
+  if (date1 < date2) 1;
+  if (date1 === date2) -1;
+  if (date1 > date2) -1;
+  return 0;
+};
+
+export const convertToDate = (dateString: string) => {
+  const [day, month, year] = dateString.split("/").map(Number);
+  return new Date(year, month - 1, day);
+};
+
+
+export const getCountryFullname = (countryCode:string) => {
+  try {
+    return countryList().getLabel(countryCode);
+  } catch (error) {
+    console.error("Error getting country name:", error);
+  }
 };

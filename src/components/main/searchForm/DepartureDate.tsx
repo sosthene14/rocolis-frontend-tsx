@@ -1,4 +1,4 @@
-import {CustomDatePicker} from "@/components/customs/CustomDatePicker";
+import { CustomDatePicker } from "@/components/customs/CustomDatePicker";
 import { minDate } from "@/constants/variables";
 import {
   formatedDayJsDate,
@@ -8,7 +8,7 @@ import {
 } from "@/lib/utils";
 import { useDatePickerStore } from "@/store/store";
 
-export const DepartureDate = () =>{
+export const DepartureDate = () => {
   const { _setDate } = useDatePickerStore();
   const dateFromLsg = localStorage.getItem("departureDate");
   const convertedDate = slashedFormatedDate(dateFromLsg as string);
@@ -20,7 +20,7 @@ export const DepartureDate = () =>{
       <form>
         <div className="relative flex items-center">
           <CustomDatePicker
-          placement="bottomRight"
+            placement="bottomRight"
             className="border-2 custom-datepicker-2 cursor-pointer hover:bg-slate-200 font-bold bg-white dark:bg-slate-200 outline-none border-slate-200 py-3 rounded-md placeholder:text-zinc-900 text-zinc-900 text-opacity-60 text-sm font-['Montserrat']"
             placeholder="Date de départ"
             minDate={minDate}
@@ -42,4 +42,4 @@ export const DepartureDate = () =>{
       </form>
     </div>
   );
-}
+};

@@ -25,7 +25,8 @@ export const Departure = () => {
       </label>
       <div onClick={() => setErrorDeparture(false)}>
         <CustomSelect
-          notFoundText={`la ville ${departure} n'est pas disponnible`}
+          classNameInput="mr-6 my-4 text-gray-500"
+          notFoundText={`cette ville n'est pas disponnible`}
           label="departure"
           cityType="ville de départ"
           defaultvalue={departure}

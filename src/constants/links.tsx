@@ -24,17 +24,17 @@ export const menuNavBar:IMenuList[] = [
 
 export const menuAccount = [
   {
-    icon: <ArcticonsAdFree className="fill-current" />,
+    icon: <ArcticonsAdFree className="fill-current w-5 h-5" />,
     label: "Mes annonces",
     link:""
   },
   {
-    icon: <LineMdBellLoop className="fill-current" />,
+    icon: <LineMdBellLoop className="fill-current w-5 h-5" />,
     label: "Gérer les notifications",
     link:""
   },
   {
-    icon: <MageDashboard4Fill className="fill-current" />,
+    icon: <MageDashboard4Fill className="fill-current w-5 h-5" />,
     label: "Vue d'ensemble",
     link:""
   }

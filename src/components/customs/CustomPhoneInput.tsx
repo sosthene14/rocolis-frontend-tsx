@@ -16,7 +16,7 @@ export const CustomPhoneInput = ({
   onChange,
   isValidedPhone,
 }: IProps) => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue || "");
   const [isValid, setIsValid] = useState(true);
 
   useEffect(() => {
@@ -26,20 +26,20 @@ export const CustomPhoneInput = ({
   }, [defaultValue]);
 
   useEffect(() => {
-    isValidedPhone(isValid);
-  }, [isValid, isValidedPhone]);
-
-  useEffect(() => {
-    onChange(value);
     if (value !== "") {
       setIsValid(isValidPhoneNumber(value));
     } else {
       setIsValid(true);
     }
-  }, [value, onChange]);
+  }, [value]);
+
+  useEffect(() => {
+    isValidedPhone(isValid);
+  }, [isValid, isValidedPhone]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
+    onChange(e.target.value);
   };
 
   return (

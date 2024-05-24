@@ -22,19 +22,19 @@ export interface IInputField {
     departureCountry: string;
     destinationCity: string;
     destinationCountry: string;
-    departureDate: Date;
-    arrivalDate: Date;
+    departureDate: Date | undefined;
+    arrivalDate: Date | undefined;
   
     availableKilos: number;
     kilosPrice: number;
     currency: string;
     currencyLabel: string;
   
-    viewNumber: Date;
+    viewNumber: number;
     description: string;
     constraintes: string;
-    publicationDate: Date;
-    expirationDate: Date;
+    publicationDate: Date|undefined;
+    expirationDate: Date | undefined;
     isValided: boolean;
     discuss: boolean;
   }

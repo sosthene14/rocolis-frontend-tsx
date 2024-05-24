@@ -1,11 +1,14 @@
 import { destinationsList } from "@/assets/images/Images";
 import { IPublishAdd } from "@/components/interfaces/interfaces";
 import { getCurrentDateSlashFormat } from "@/lib/utils";
+import cities from "./cities.json"
 
 export const userRoles = [
     { value: "expeditor", label: "Expéditeur" },
     { value: "traveler", label: "Voyageur" },
   ];
+
+  
 
   export const destinationsDatas = [
     {
@@ -73,42 +76,21 @@ export const userRoles = [
     departureCountry: "",
     destinationCity: "",
     destinationCountry: "",
-    departureDate: new Date(),
-    arrivalDate: new Date(),
+    departureDate: undefined,
+    arrivalDate: undefined,
     availableKilos: 0,
     kilosPrice: 0,
     currency: "",
     currencyLabel: "",
-    viewNumber: new Date(),
+    viewNumber: 0,
     description: "",
     constraintes: "",
-    publicationDate: new Date(),
-    expirationDate: new Date(),
+    publicationDate:undefined,
+    expirationDate: undefined,
     isValided: false,
     discuss: false,
   };
 
-  export const frameworks = [
-    {
-      value: "next.js",
-      label: "Next.js",
-    },
-    {
-      value: "sveltekit",
-      label: "SvelteKit",
-    },
-    {
-      value: "nuxt.js",
-      label: "Nuxt.js",
-    },
-    {
-      value: "remix",
-      label: "Remix",
-    },
-    {
-      value: "astro",
-      label: "Astro",
-    },
-  ];
+  export const frameworks = cities
 
   export const minDate = getCurrentDateSlashFormat();

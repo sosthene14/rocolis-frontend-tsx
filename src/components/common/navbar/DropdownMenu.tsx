@@ -52,14 +52,14 @@ export const Dropdown = () => {
               <span>Votre compte</span>
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent className="dark:bg-slate-800 -mr-10">
+              <DropdownMenuSubContent className="dark:bg-slate-800 -mr-16">
                 {menuAccount.map((item, index) => (
                   <DropdownMenuItem key={index} className="flex gap-2">
                     {item.icon as ReactNode}
-                    <p className="text-neutral-900 text-sm font-semibold cursor-pointer">
+                    <p className="text-neutral-900 text-md font-semibold cursor-pointer">
                       <NavLink
                         to={item.link}
-                        className="text-neutral-900 dark:text-white text-sm font-semibold cursor-pointer hover:text-violet-500 transition-all duration-150"
+                        className="text-neutral-900 text-[15px] dark:text-white font-semibold cursor-pointer hover:text-violet-500 transition-all duration-150"
                       >
                         {item.label}
                       </NavLink>

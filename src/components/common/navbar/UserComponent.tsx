@@ -28,22 +28,22 @@ export const UserComponent = () => {
             <DropdownMenuTrigger className="outline-none">
               <SolarUserBold className="h-[2.5rem] w-[2.5rem] p-2 bg-slate-200 rounded-full" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="dark:bg-slate-700 bg-white  border-none">
-              <DropdownMenuItem className="flex gap-2">
-                <ArcticonsAdFree className="h-[1.2rem] fill-current " />
-                Mes annonces
+            <DropdownMenuContent className="dark:bg-slate-700  bg-white  border-none">
+              <DropdownMenuItem className="flex gap-2 ">
+                <ArcticonsAdFree className="h-[1.2rem] text-md fill-current " />
+                <span className="text-md"> Mes annonces</span>
               </DropdownMenuItem>
               <DropdownMenuItem className="flex gap-2">
                 <LineMdBellLoop />
                 Gérer les notifications
               </DropdownMenuItem>
               <DropdownMenuItem className="flex gap-2">
-                <MageDashboard4Fill  />
+                <MageDashboard4Fill />
                 Vue d'ensemble
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="flex gap-2">
-                <StreamlineLogout1Solid  />
+                <StreamlineLogout1Solid />
                 Deconnexion
               </DropdownMenuItem>
             </DropdownMenuContent>
