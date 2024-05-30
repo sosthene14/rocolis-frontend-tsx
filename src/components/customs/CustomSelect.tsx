@@ -2,6 +2,8 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { cn, getCountryFullname } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useMemo } from "react";
+
+
 import {
   Command,
   CommandEmpty,
@@ -47,6 +49,7 @@ export function CustomSelect({
   const [query, setQuery] = useState("");
   const { _setDestination } = useDestinationStore();
   const { _setDeparture } = useDepartureStore();
+
 
   useEffect(() => {
     if (defaultvalue?.length > 0) {
@@ -111,7 +114,7 @@ export function CustomSelect({
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             <TypcnDelete
               onClick={() => handleClear()}
-              className="w-5 h-5 z-99"
+              className="w-5  h-5 z-99"
             />
           </div>
         </Button>
@@ -125,7 +128,7 @@ export function CustomSelect({
               value={query}
               onValueChange={setQuery}
             />
-            <div className="absolute inset-y-0 right-8 flex items-center pr-2">
+            <div className="absolute -mt-0 inset-y-0 right-10 flex items-center pr-2">
               <TypcnDelete onClick={() => setQuery("")} className=" text-slate-400 w-5 h-5 cursor-pointer" />
             </div>
           </div>

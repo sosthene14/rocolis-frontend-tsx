@@ -32,7 +32,7 @@ export const Departure = () => {
           defaultvalue={departure}
           onChange={onChange}
           className={`${errorDeparture ? "border-red-400" : "border-slate-200"}
-        border-2 transition-all hover:border-blue-500 hover:text-gray-500 flex bg-white dark:bg-slate-200  justify-between w-[250px] text-left placeholder:text-black/25 transition-duration: 75ms outline-none px-3 py-[23px] rounded-md text-zinc-900 text-opacity-60 text-sm font-bold font-['Montserrat']`}
+        border-2 transition-all hover:border-blue-500 hover:text-gray-500 flex bg-white dark:bg-slate-200  justify-between w-[250px] text-left placeholder:text-black/25 transition-duration: 75ms outline-none px-3 py-[23px] rounded-md text-zinc-900  text-sm font-bold font-['Montserrat']`}
         />
       </div>
     </div>

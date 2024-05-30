@@ -1,8 +1,9 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import countryList from "react-select-country-list";
 import dayjs from "dayjs";
-
+import countries from "i18n-iso-countries";
+import frLocale from 'i18n-iso-countries/langs/fr.json'
+countries.registerLocale(frLocale)
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -121,8 +122,17 @@ export const convertToDate = (dateString: string) => {
 
 export const getCountryFullname = (countryCode:string) => {
   try {
-    return countryList().getLabel(countryCode);
+    const countryObj = countries.getName(countryCode, "fr")
+    return countryObj
   } catch (error) {
     console.error("Error getting country name:", error);
+  }
+};
+
+export const getSystemTheme = () => {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  } else {
+    return 'light';
   }
 };

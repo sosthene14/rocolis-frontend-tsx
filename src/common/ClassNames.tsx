@@ -1,4 +1,5 @@
 import { heroImg } from "@/assets/images/Images";
+import { getSystemTheme } from "@/lib/utils";
 import { CSSProperties } from "react";
 import {
   ControlProps,
@@ -21,6 +22,61 @@ export const gradientText =
   "bg-gradient-to-r from-[#10837F] to-[#162F66] bg-clip-text text-transparent";
 export const gradientBtn =
   "text-white transition-all duration-500 bg-gradient-to-r from-[#10837f] via-[#10937f] to-[#162f66] hover:bg-gradient-to-br focus:ring-0 focus:ring-0 dark:focus:ring-0 font-medium rounded-md text-sm px-5 py-2.5 text-center mr-2";
+
+    const theme = localStorage.getItem("vite-ui-theme");
+  const systemTheme = getSystemTheme();
+  const selectLightMode = {bgColor:"white",opacity:".6"}
+  const selectDarkMode = {bgColor:"rgb(71 85 105)",opacity:""}
+  const customSelectStyles =
+    theme === "dark"
+      ? selectDarkMode
+      : theme === "light"
+      ? selectLightMode
+      : systemTheme === "dark"
+      ? selectDarkMode
+      : systemTheme === "light"
+      ? selectLightMode
+      : selectLightMode;
+
+  export const regsiterSelectStyles: StylesConfig<unknown, false, GroupBase<unknown>> = {
+    indicatorSeparator: () => ({ display: "none" }),
+  
+    control: (
+      baseStyles: CSSObjectWithLabel,
+      state: ControlProps<unknown, false, GroupBase<unknown>>
+    ) => ({
+      ...baseStyles,
+      padding: "0.1rem 0.0rem ",
+      color: "white",
+      width:"280px",
+      outline: "none",
+      paddingTop:"3px",
+      paddingBottom:"3px",
+      "&:hover":{
+        border: "1px solid rgb(59 130 246)",
+      },
+      backgroundColor:customSelectStyles.bgColor,
+      opacity:customSelectStyles.opacity,
+      border: "1px solid rgb(209 213 219)",
+      fontSize: "15px",
+      borderRadius: "2px",
+      display: "flex",
+      gap: "1.25rem",
+      boxShadow: state.isFocused ? "0 0 0 1px" : "none",
+      borderColor: "gray",
+    }),
+  
+    option: (baseStyles: CSSObjectWithLabel, state: IStateSelect) => ({
+      ...baseStyles,
+      zIndex:"100px",
+      backgroundColor: state.isSelected ? "#10837f" : "white",
+      color: state.isSelected ? "white" : "black",
+      "&:hover": {
+        backgroundColor: "rgba(16, 131, 127, .7)",
+        color: "white",
+      },
+    }),
+  };
 
 export const selectStyles: StylesConfig<unknown, false, GroupBase<unknown>> = {
   indicatorSeparator: () => ({ display: "none" }),
@@ -96,7 +152,22 @@ export const HeroBackgroundStyle = {
 
 export const titleClassNames = "text-3xl text-center mb-10 font-bold dark:text-white text-slate-600"
 export const subTitlesClassNames = "text-xl  mx-5 text-center mb-10 font-bold dark:text-white text-slate-600"
-export const publishAddInputStyle = " dark:bg-slate-600 text-black dark:text-gray-300 placeholder:text-gray-300 focus:ring-0 flex focus:border-blue-200 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-blue-300 w-[280px] md:w-[380px] transition-duration: 75ms outline-none p-3 rounded-sm bg-white opacity-60 text-opacity-60 dark:opacity-100 text-sm font-normal font-['Poppins']"
-export const publishAddTextarea = "focus:ring-0 flex dark:bg-slate-600 dark:text-white placeholder:text-gray-300	 focus:border-blue-200 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-blue-300 w-full transition-duration: 75ms outline-none p-3 rounded-sm bg-white opacity-60 dark:opacity-100 text-opacity-10 text-sm font-normal font-['Poppins']"
+export const publishAddInputStyle = "hover:border-blue-500  dark:bg-slate-600 text-black dark:placeholder:text-gray-300 dark:text-gray-300 placeholder:text-black focus:ring-0 flex focus:border-blue-500 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-gray-300 w-[280px] md:w-[300px] lg:w-[380px] transition-duration: 75ms outline-none p-3 rounded-sm bg-red-white shadow-sm opacity-60  dark:opacity-100 text-sm font-normal font-['Poppins']"
+export const publishAddTextarea = "focus:ring-0 flex dark:bg-slate-600 dark:text-white placeholder:text-gray-300 hover:border-blue-500 focus:border-blue-500 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-gray-300  transition-duration: 75ms outline-none p-3  mx-auto rounded-sm bg-white opacity-60 dark:opacity-100 text-opacity-10 text-sm font-normal font-['Poppins']"
 export const popoverClass = "w-[280px] md:w-[380px] bg-white"
 export const publishAddLabel = "block mb-2 text-sm font-medium text-gray-500 dark:text-gray-100"
+
+
+export const chatBotTheme ={
+  background: "#f5f8fb",
+    headerBgColor: "#10837f",
+    headerFontColor: "#fff",
+    headerFontSize: "15px",
+    botBubbleColor: "#EF6C00",
+    botFontColor: "#fff",
+    userBubbleColor: "#fff",
+    userFontColor: "#4a4a4a",
+}
+
+export const registerInput = "w-[280px] ring-0 focus:ring-0 hover:border-blue-500  dark:bg-slate-600 text-black dark:placeholder:text-gray-300 dark:text-gray-300 placeholder:text-black focus:ring-0 flex focus:border-blue-500 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-gray-300  transition-duration: 75ms outline-none p-3 rounded-sm bg-red-white shadow-sm opacity-60  dark:opacity-100 text-sm font-normal font-['Poppins']"
+export const linkClassNames = "text-[#162F66] transition-all duration-100 hover:dark:text-[#82a6f3a3] hover:text-[#162f66b5] dark:text-[#82a6f3] font-semibold text-sm text-center lg:text-center font-['Montserrat'] cursor-pointer"

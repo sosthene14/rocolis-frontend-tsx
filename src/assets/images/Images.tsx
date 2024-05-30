@@ -10,9 +10,13 @@ import mali from "./mali.webp";
 import nigeria from "./nigeria.webp";
 import rdc from "./rdc.webp";
 import senegal from "./senegal.webp";
+import userIcon from "./user.png"
+import immeubleBgLogin from "./immeublebg.webp"
 
 
 export const heroImg = heroImage;
+export const userIconImg = userIcon
+export const ImmeubleBgLogin = immeubleBgLogin
 
 export const picsList = [ad1Pic, ad2Pic];
 

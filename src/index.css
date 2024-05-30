@@ -88,6 +88,45 @@
 }
 
 .custom-datepicker-2 .ant-picker-input > input::placeholder {
-  opacity: 0.6; /* Changer l'opacité à 0.6 */
+ /* Changer l'opacité à 0.6 */
   color: black; /* Facultatif : changer la couleur du placeholder si nécessaire */
+}
+
+
+
+ .gradient-btn {
+  position: relative;
+  display: inline-block;
+  color: white;
+
+ /* rounded-md */
+  background: linear-gradient(to right, #10937f, #162f66);
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+
+
+.gradient-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #10937f;
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+
+.gradient-btn:hover::before {
+  width: 100%;
+}
+
+
+
+.gradient-btn:hover {
+  color: white;
 }

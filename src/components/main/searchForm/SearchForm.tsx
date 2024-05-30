@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import {Departure} from "./Departure";
-import {DepartureDate} from "./DepartureDate";
-import {Destination} from "./Destination";
+import { Departure } from "./Departure";
+import { DepartureDate } from "./DepartureDate";
+import { Destination } from "./Destination";
 import {
   useDatePickerStore,
   useDepartureStore,
@@ -42,11 +42,9 @@ export const SearchForm = () => {
       setErrorDestination(true);
     }
   };
-  return (
-    <div
-      className="bg-white  rounded-2xl -mt-20 w-[320px] md:w-[750px] lg:w-[1000px]  m-auto"
-      style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
-    >
+
+  const SearchFormHeader = () => {
+    return (
       <div className="text-neutral-900 justify-center text-base font-semibold font-['Montserrat'] flex gap-2 p-5 items-center ">
         <div className="hidden sm:flex">
           <PlaneIcon />
@@ -56,6 +54,14 @@ export const SearchForm = () => {
           Trouver des vendeurs de kilos plus facilement
         </p>
       </div>
+    );
+  };
+  return (
+    <div
+      className="bg-white py-5  rounded-xl -mt-20 w-[320px] md:w-[750px] lg:w-[1000px]  m-auto"
+      style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
+    >
+      <SearchFormHeader />
       <div className="flex justify-center gap-8 flex-wrap p-5">
         <Departure />
         <Destination />
@@ -71,4 +77,4 @@ export const SearchForm = () => {
       </div>
     </div>
   );
-}
+};

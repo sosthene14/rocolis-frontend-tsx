@@ -11,6 +11,7 @@ import { IPublishAdd } from "@/components/interfaces/interfaces";
 import { initializedData } from "@/constants/variables";
 import { InputField } from "@/components/customs/CustomInput";
 import { TextAreaField } from "@/components/customs/CustomTextarea";
+import { useTheme } from "@/hooks/useTheme";
 import {
   gradientBtn,
   popoverClass,
@@ -18,15 +19,37 @@ import {
   publishAddLabel,
 } from "@/common/ClassNames";
 import { NavBar } from "@/components/common/navbar/NavBar";
-import { addOneDay, convertToDate, removeOneDay } from "@/lib/utils";
+import {
+  addOneDay,
+  convertToDate,
+  getSystemTheme,
+  removeOneDay,
+} from "@/lib/utils";
+import { Title } from "@/components/common/title/Title";
+import { SearchForm } from "../searchForm/SearchForm";
+
+
 
 export const PublishAdsTraveler = () => {
   const [disabledInput] = useState(false);
   const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true);
   const [data, setData] = useState<IPublishAdd>(initializedData);
-  const maxDepartureDate = data.arrivalDate && removeOneDay(data.arrivalDate as unknown as string)
-  const minDateArrivel = data.departureDate && addOneDay(data.departureDate as unknown as string)
-
+  const maxDepartureDate =
+    data.arrivalDate && removeOneDay((data.arrivalDate as unknown) as string);
+  const minDateArrivel =
+    data.departureDate && addOneDay((data.departureDate as unknown) as string);
+  const theme = useTheme().theme;
+  const systemTheme = getSystemTheme();
+  const classForDatePicker =
+    theme === "dark"
+      ? "custom-datepicker"
+      : theme === "light"
+      ? "custom-datepicker-2"
+      : systemTheme === "dark"
+      ? "custom-datepicker"
+      : systemTheme === "light"
+      ? "custom-datepicker-2"
+      : "";
 
   useEffect(() => {
     const destination = localStorage.getItem("destination");
@@ -73,12 +96,13 @@ export const PublishAdsTraveler = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     data.kilosPrice = Number(data.kilosPrice);
-    data.expirationDate = data.arrivalDate
+    data.expirationDate = data.arrivalDate;
     data.publicationDate = new Date();
-    data.departureDate = convertToDate(data.departureDate as unknown as string);
-    data.arrivalDate = convertToDate(data.arrivalDate as unknown as string);
+    data.departureDate = convertToDate(
+      (data.departureDate as unknown) as string
+    );
+    data.arrivalDate = convertToDate((data.arrivalDate as unknown) as string);
     data.availableKilos = Number(data.availableKilos);
-    console.log(data);
   };
 
   return (
@@ -90,9 +114,14 @@ export const PublishAdsTraveler = () => {
       <NavBar />
       <ToastContainer />
       <LoaderCircle isLoading={false} />
+
+      <div className="mt-32">
+        <SearchForm />
+      </div>
+      <Title title="Publier une annonce" />
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 dark:bg-slate-700 bg-slate-100 w-[90%] xl:w-3/4 mx-auto rounded-xl py-10 items-center justify-center mt-20 gap-0 sm:gap-5  ">
-          <div className="flex items-center gap-4 lg:gap-16 flex-wrap justify-center">
+        <div className="grid grid-cols-1 dark:bg-slate-700 bg-slate-200/50 w-[90%] xl:w-3/4 mx-auto rounded-xl py-10 items-center justify-center mt-20 gap-0 sm:gap-5  ">
+          <div className="flex mx-2 items-center gap-4 lg:gap-16 flex-wrap justify-center">
             <InputField
               label="Nom du voyageur"
               disabled={disabledInput}
@@ -117,7 +146,7 @@ export const PublishAdsTraveler = () => {
               required
             />
           </div>
-          <div className="flex items-center mt-4 lg:mt-0 gap-4 lg:gap-16 flex-wrap justify-center">
+          <div className="flex mx-2 items-center mt-4 lg:mt-0 gap-4 lg:gap-16 flex-wrap justify-center">
             <InputField
               label="Prix du kilo"
               disabled={disabledInput}
@@ -135,18 +164,18 @@ export const PublishAdsTraveler = () => {
               </label>
               <CustomSelect
                 label="devise"
-                classNameInput="mr-8 mb-2"
+                classNameInput="mr-6 my-4 text-gray-500"
                 classNamePopover={popoverClass}
                 notFoundText="Devise introuvable"
                 cityType="devise"
-                className={`${publishAddInputStyle} py-[22px]`}
+                className={`${publishAddInputStyle} py-[22px] bg-white`}
                 defaultvalue={data.currency || ""}
                 disabled={disabledInput}
                 onChange={(value) => handleSelectChange("currency", value)}
               />
             </div>
           </div>
-          <div className="flex items-center mt-4 lg:mt-0 gap-4 lg:gap-16  flex-wrap justify-center">
+          <div className="flex mx-2 items-center mt-4 lg:mt-0 gap-4 lg:gap-16  flex-wrap justify-center">
             <div>
               <label className={publishAddLabel}>
                 Date de départ <span className="text-red-500">*</span>
@@ -159,7 +188,7 @@ export const PublishAdsTraveler = () => {
                 onChange={(_date, dateString) =>
                   handleDateChange("departureDate", dateString)
                 }
-                className={`${publishAddInputStyle} custom-datepicker`}
+                className={`${publishAddInputStyle}  ${classForDatePicker}`}
                 placeholder="Date de départ"
               />
             </div>
@@ -169,8 +198,8 @@ export const PublishAdsTraveler = () => {
               </label>
               <CustomSelect
                 classNamePopover={popoverClass}
-                classNameInput="mr-8 mb-2"
-                className={`${publishAddInputStyle} py-[22px]`}
+                classNameInput="mr-6 my-4 text-gray-500"
+                className={`${publishAddInputStyle} bg-white py-[22px]`}
                 label="ville de depart"
                 cityType="ville de depart"
                 notFoundText="Ville introuvable"
@@ -180,7 +209,7 @@ export const PublishAdsTraveler = () => {
               />
             </div>
           </div>
-          <div className="flex mt-4 lg:mt-0 items-center gap-4 lg:gap-16  flex-wrap justify-center">
+          <div className="flex mx-2 mt-4 lg:mt-0 items-center gap-4 lg:gap-16  flex-wrap justify-center">
             <div>
               <label className={publishAddLabel}>
                 Date d'arrivée <span className="text-red-500">*</span>
@@ -192,7 +221,7 @@ export const PublishAdsTraveler = () => {
                 onChange={(_date, dateString) =>
                   handleDateChange("arrivalDate", dateString)
                 }
-                className={`${publishAddInputStyle} custom-datepicker `}
+                className={`${publishAddInputStyle} ${classForDatePicker} `}
                 placeholder="Date d'arrivée"
               />
             </div>
@@ -201,9 +230,9 @@ export const PublishAdsTraveler = () => {
                 Ville d'arrivée <span className="text-red-500">*</span>
               </label>
               <CustomSelect
-                classNameInput="mr-8 mb-2"
+                classNameInput="mr-6 my-4 text-gray-500"
                 classNamePopover={popoverClass}
-                className={`${publishAddInputStyle} py-[22px]`}
+                className={`${publishAddInputStyle} py-[22px] bg-white`}
                 label="ville d'arrivée"
                 cityType="ville d'arrivée"
                 notFoundText="Ville introuvable"
@@ -215,17 +244,17 @@ export const PublishAdsTraveler = () => {
               />
             </div>
           </div>
-          <div className="flex mt-4 lg:mt-0 items-center gap-4 lg:gap-16 flex-wrap justify-center">
+          <div className="flex mt-4 mx-2 lg:mt-0 items-center gap-4 lg:gap-16 flex-wrap justify-center">
             <div>
               <label className={publishAddLabel}>
                 Discutable <span className="text-red-500">*</span>
               </label>
               <CustomSelect
-                classNameInput="hidden"
+                classNameInput="mr-6 my-4 text-gray-500"
                 classNamePopover={popoverClass}
                 label="discutable"
                 notFoundText="veuillez choisir oui ou non"
-                className={`${publishAddInputStyle} py-[22px]`}
+                className={`${publishAddInputStyle} py-[22px] bg-white`}
                 cityType="discutable"
                 defaultvalue={data.discuss ? "Oui" : "Non"}
                 disabled={disabledInput}
@@ -250,7 +279,7 @@ export const PublishAdsTraveler = () => {
               />
             </div>
           </div>
-          <div className="flex mt-4 lg:mt-0 justify-center  w-[90%] xl:w-[75%] mx-auto">
+          <div className="flex mx-2 flex-wrap flex-row-reverse items-center justify-center ">
             <TextAreaField
               label="Description (facultative)"
               disabled={disabledInput}
@@ -259,8 +288,6 @@ export const PublishAdsTraveler = () => {
               value={data.description || ""}
               onChange={handleChange}
             />
-          </div>
-          <div className="flex justify-center mt-2 w-[90%] xl:w-[75%] mx-auto">
             <TextAreaField
               label="Contraintes (facultative)"
               disabled={disabledInput}
@@ -270,6 +297,7 @@ export const PublishAdsTraveler = () => {
               onChange={handleChange}
             />
           </div>
+
           <div className="flex flex-wrap mt-5 flex-row-reverse items-center justify-center gap-8">
             <button type="submit" className={gradientBtn}>
               Publier

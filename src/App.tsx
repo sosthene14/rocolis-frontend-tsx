@@ -6,6 +6,7 @@ import PrivateRoutes from "./routes/privateRoutes";
 import {Login} from "./components/main/login/Login";
 import { PublishAdsTraveler } from "./components/main/publishAds/PublishAdsTraveler";
 import 'react-toastify/dist/ReactToastify.css';
+import { Register } from "./components/main/register/Register";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/publish-ad" element={<PublishAdsTraveler />} />
           </Route>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </ThemeProvider>
