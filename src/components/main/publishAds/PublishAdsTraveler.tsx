@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 import { ToastContainer } from "react-toastify";
 import { LoaderCircle } from "@/assets/animations/LoaderCircle";
-import { Footer } from "@/components/common/footer/Footer";
 import { CustomDatePicker } from "@/components/customs/CustomDatePicker";
-import { minDate } from "@/constants/variables";
+import {
+  citiesList,
+  currencyList,
+  discussList,
+  minDate,
+} from "@/constants/variables";
 import { CustomSelect } from "@/components/customs/CustomSelect";
 import { CustomPhoneInput } from "@/components/customs/CustomPhoneInput";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IPublishAdd } from "@/components/interfaces/interfaces";
 import { initializedData } from "@/constants/variables";
 import { InputField } from "@/components/customs/CustomInput";
@@ -18,22 +22,25 @@ import {
   publishAddInputStyle,
   publishAddLabel,
 } from "@/common/ClassNames";
-import { NavBar } from "@/components/common/navbar/NavBar";
 import {
   addOneDay,
   convertToDate,
   getSystemTheme,
   removeOneDay,
 } from "@/lib/utils";
-import { Title } from "@/components/common/title/Title";
-import { SearchForm } from "../searchForm/SearchForm";
 
+const isValidPath = window.location.pathname == "/publish-ad";
 
-
-export const PublishAdsTraveler = () => {
+export const PublishAdsTraveler = ({
+  loadedDatas,
+  setIsModifying,
+}: {
+  loadedDatas?: IPublishAdd;
+  setIsModifying?: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [disabledInput] = useState(false);
   const [isValidPhoneNumber, setIsValidPhoneNumber] = useState(true);
-  const [data, setData] = useState<IPublishAdd>(initializedData);
+  const [data, setData] = useState<IPublishAdd>(loadedDatas || initializedData);
   const maxDepartureDate =
     data.arrivalDate && removeOneDay((data.arrivalDate as unknown) as string);
   const minDateArrivel =
@@ -111,14 +118,9 @@ export const PublishAdsTraveler = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <NavBar />
       <ToastContainer />
       <LoaderCircle isLoading={false} />
 
-      <div className="mt-32">
-        <SearchForm />
-      </div>
-      <Title title="Publier une annonce" />
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 dark:bg-slate-700 bg-slate-200/50 w-[90%] xl:w-3/4 mx-auto rounded-xl py-10 items-center justify-center mt-20 gap-0 sm:gap-5  ">
           <div className="flex mx-2 items-center gap-4 lg:gap-16 flex-wrap justify-center">
@@ -163,6 +165,8 @@ export const PublishAdsTraveler = () => {
                 Devise <span className="text-red-500">*</span>
               </label>
               <CustomSelect
+                datas={currencyList}
+                defaultQuery={data.currency}
                 label="devise"
                 classNameInput="mr-6 my-4 text-gray-500"
                 classNamePopover={popoverClass}
@@ -181,6 +185,7 @@ export const PublishAdsTraveler = () => {
                 Date de départ <span className="text-red-500">*</span>
               </label>
               <CustomDatePicker
+                defaultValue={data.departureDate as string}
                 required={true}
                 maxDate={maxDepartureDate}
                 minDate={minDate}
@@ -197,13 +202,15 @@ export const PublishAdsTraveler = () => {
                 Ville de départ <span className="text-red-500">*</span>
               </label>
               <CustomSelect
+                datas={citiesList}
+                defaultQuery={data.departureCity}
                 classNamePopover={popoverClass}
                 classNameInput="mr-6 my-4 text-gray-500"
                 className={`${publishAddInputStyle} bg-white py-[22px]`}
                 label="ville de depart"
                 cityType="ville de depart"
                 notFoundText="Ville introuvable"
-                defaultvalue={data.departureCity || ""}
+                defaultvalue={data.departureCity.toLowerCase() || ""}
                 disabled={disabledInput}
                 onChange={(value) => handleSelectChange("departureCity", value)}
               />
@@ -215,6 +222,7 @@ export const PublishAdsTraveler = () => {
                 Date d'arrivée <span className="text-red-500">*</span>
               </label>
               <CustomDatePicker
+                defaultValue={data.arrivalDate as string}
                 required={true}
                 minDate={minDateArrivel}
                 disabled={disabledInput}
@@ -230,13 +238,16 @@ export const PublishAdsTraveler = () => {
                 Ville d'arrivée <span className="text-red-500">*</span>
               </label>
               <CustomSelect
+              
+                datas={citiesList}
+                defaultQuery={data.destinationCity}
                 classNameInput="mr-6 my-4 text-gray-500"
                 classNamePopover={popoverClass}
                 className={`${publishAddInputStyle} py-[22px] bg-white`}
                 label="ville d'arrivée"
                 cityType="ville d'arrivée"
                 notFoundText="Ville introuvable"
-                defaultvalue={data.destinationCity || ""}
+                defaultvalue={data.destinationCity.toLowerCase() || ""}
                 disabled={disabledInput}
                 onChange={(value) =>
                   handleSelectChange("destinationCity", value)
@@ -250,13 +261,14 @@ export const PublishAdsTraveler = () => {
                 Discutable <span className="text-red-500">*</span>
               </label>
               <CustomSelect
+                datas={discussList}
                 classNameInput="mr-6 my-4 text-gray-500"
                 classNamePopover={popoverClass}
                 label="discutable"
                 notFoundText="veuillez choisir oui ou non"
                 className={`${publishAddInputStyle} py-[22px] bg-white`}
                 cityType="discutable"
-                defaultvalue={data.discuss ? "Oui" : "Non"}
+                defaultvalue={data.discuss ? "oui" : "non"}
                 disabled={disabledInput}
                 onChange={(value) =>
                   handleSelectChange("discuss", value === "Oui")
@@ -268,6 +280,7 @@ export const PublishAdsTraveler = () => {
                 Numéro de téléphone <span className="text-red-500">*</span>
               </label>
               <CustomPhoneInput
+                defaultValue={data.travelerPhone}
                 isValidedPhone={setIsValidPhoneNumber}
                 disabled={disabledInput}
                 onChange={handlePhoneChange}
@@ -303,15 +316,19 @@ export const PublishAdsTraveler = () => {
               Publier
             </button>
             <button
+              onClick={() => {
+                isValidPath
+                  ? setData(initializedData)
+                  : setIsModifying && setIsModifying(false);
+              }}
               type="reset"
               className="inline-flex items-center justify-center px-4 py-2 text-red-500 transition duration-300 ease-in-out bg-white border border-red-500 rounded-md shadow-md hover:bg-red-100 hover:text-red-600 focus:outline-none focus:ring focus:ring-red-200"
             >
-              Annuler
+              {isValidPath ? "Effacer" : "Annuler"}
             </button>
           </div>
         </div>
       </form>
-      <Footer />
     </motion.div>
   );
 };

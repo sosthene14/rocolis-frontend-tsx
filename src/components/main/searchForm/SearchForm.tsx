@@ -10,6 +10,7 @@ import {
 import { PlaneIcon } from "@/assets/icons/Icon";
 import { gradientBtn } from "@/common/ClassNames";
 import { checkDateFormat } from "@/lib/utils";
+import { citiesList } from "@/constants/variables";
 
 export const SearchForm = () => {
   const { date, _setDate } = useDatePickerStore();
@@ -63,8 +64,8 @@ export const SearchForm = () => {
     >
       <SearchFormHeader />
       <div className="flex justify-center gap-8 flex-wrap p-5">
-        <Departure />
-        <Destination />
+        <Departure datas={citiesList} />
+        <Destination datas={citiesList} />
         <DepartureDate />
         <div>
           <button

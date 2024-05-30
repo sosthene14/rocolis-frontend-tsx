@@ -1,11 +1,15 @@
 import { CustomSelect } from "@/components/customs/CustomSelect";
 import { useEffect, useState } from "react";
 import { useDepartureStore } from "@/store/store";
+import { IDatas } from "./Destination";
 
-export const Departure = () => {
+export const Departure = ({datas}:{datas: IDatas[]}) => {
   const [departure, setDeparture] = useState("");
-  const { _setDeparture, errorDeparture, setErrorDeparture } =
-    useDepartureStore();
+  const {
+    _setDeparture,
+    errorDeparture,
+    setErrorDeparture,
+  } = useDepartureStore();
   const onChange = (value: string) => {
     _setDeparture(value);
   };
@@ -25,6 +29,8 @@ export const Departure = () => {
       </label>
       <div onClick={() => setErrorDeparture(false)}>
         <CustomSelect
+          datas={datas}
+          defaultQuery={departure}
           classNameInput="mr-6 my-4 text-gray-500"
           notFoundText={`cette ville n'est pas disponnible`}
           label="departure"

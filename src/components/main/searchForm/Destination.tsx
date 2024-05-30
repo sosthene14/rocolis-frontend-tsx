@@ -1,10 +1,16 @@
 import { CustomSelect } from "@/components/customs/CustomSelect";
 import { useEffect, useState } from "react";
 import { useDestinationStore } from "@/store/store";
-export const Destination = () =>{
+export interface IDatas {
+  [key: string]: string;
+}
+export const Destination = ({ datas }: { datas: IDatas[] }) => {
   const [destination, setDestination] = useState("");
-  const { _setDestination, errorDestination, setErrorDestination } =
-    useDestinationStore();
+  const {
+    _setDestination,
+    errorDestination,
+    setErrorDestination,
+  } = useDestinationStore();
   const onChange = (value: string) => {
     _setDestination(value);
   };
@@ -17,13 +23,17 @@ export const Destination = () =>{
     <div className="relative flex items-center">
       <div onClick={() => setErrorDestination(false)}>
         <CustomSelect
+          datas={datas}
+          defaultQuery={destination}
           label="destination"
           classNameInput="mr-6 my-4 text-gray-500"
           notFoundText={`cette ville n'est pas disponnible`}
           cityType="ville d'arrivée"
           defaultvalue={destination}
           onChange={onChange}
-          className={`${errorDestination ? "border-red-400" : "border-slate-200"}
+          className={`${
+            errorDestination ? "border-red-400" : "border-slate-200"
+          }
         border-2 transition-all hover:border-blue-500 hover:text-gray-500 bg-white dark:bg-slate-200 flex  justify-between w-[250px]  text-left placeholder:text-black/25 transition-duration: 75ms outline-none px-3 py-[23px] rounded-md text-zinc-900  text-sm font-bold font-['Montserrat'] `}
         />
       </div>
@@ -37,4 +47,4 @@ export const Destination = () =>{
       </label>
     </div>
   );
-}
+};

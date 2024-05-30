@@ -22,8 +22,8 @@ export interface IInputField {
     departureCountry: string;
     destinationCity: string;
     destinationCountry: string;
-    departureDate: Date | undefined;
-    arrivalDate: Date | undefined;
+    departureDate: Date | string| undefined;
+    arrivalDate: Date | string| undefined;
   
     availableKilos: number;
     kilosPrice: number;
@@ -33,8 +33,8 @@ export interface IInputField {
     viewNumber: number;
     description: string;
     constraintes: string;
-    publicationDate: Date|undefined;
-    expirationDate: Date | undefined;
+    publicationDate: Date | string| undefined;
+    expirationDate: Date | string| undefined;
     isValided: boolean;
     discuss: boolean;
   }
