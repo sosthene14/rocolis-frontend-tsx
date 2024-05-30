@@ -16,6 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { NavLink } from "react-router-dom";
 
 export const UserComponent = () => {
   const [isLogged] = useState(true);
@@ -31,7 +32,7 @@ export const UserComponent = () => {
             <DropdownMenuContent className="dark:bg-slate-700  bg-white  border-none">
               <DropdownMenuItem className="flex gap-2 ">
                 <ArcticonsAdFree className="h-[1.2rem] text-md fill-current " />
-                <span className="text-md"> Mes annonces</span>
+                <NavLink className="text-md" to="/your-ads"> Mes annonces</NavLink>
               </DropdownMenuItem>
               <DropdownMenuItem className="flex gap-2">
                 <LineMdBellLoop />

@@ -6,7 +6,12 @@ import PrivateRoutes from "./routes/privateRoutes";
 import {Login} from "./components/main/login/Login";
 import { PublishAdsTraveler } from "./components/main/publishAds/PublishAdsTraveler";
 import 'react-toastify/dist/ReactToastify.css';
+//import { ValidationCode } from "./components/common/validation/ValidationCode";
+//import { GetUserMailEntry } from "./components/common/getUserMailEntry/GetUserMailEntry";
+//import { ModifyPassword } from "./components/main/modifyPassword/ModifyPassword";
+//import { UserPersonnalAds } from "./components/main/userPersonnalAds/UserPersonnalAds";
 import { Register } from "./components/main/register/Register";
+import { UserAdsTraveler } from "./components/main/userAds/UserAdsTraveler";
 
 const App = () => {
   return (
@@ -16,6 +21,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/publish-ad" element={<PublishAdsTraveler />} />
+            <Route path="/your-ads" element={<UserAdsTraveler />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

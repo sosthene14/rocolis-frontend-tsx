@@ -171,3 +171,4 @@ export const chatBotTheme ={
 
 export const registerInput = "w-[280px] ring-0 focus:ring-0 hover:border-blue-500  dark:bg-slate-600 text-black dark:placeholder:text-gray-300 dark:text-gray-300 placeholder:text-black focus:ring-0 flex focus:border-blue-500 justify-between hover:bg-gray-50 cursor-pointer  focus-visible:ring-transparent transition-all border-gray-300  transition-duration: 75ms outline-none p-3 rounded-sm bg-red-white shadow-sm opacity-60  dark:opacity-100 text-sm font-normal font-['Poppins']"
 export const linkClassNames = "text-[#162F66] transition-all duration-100 hover:dark:text-[#82a6f3a3] hover:text-[#162f66b5] dark:text-[#82a6f3] font-semibold text-sm text-center lg:text-center font-['Montserrat'] cursor-pointer"
+export const longParagraphsStyles = " text-gray-600 dark:text-white text-base font-normal font-['Montserrat']"
