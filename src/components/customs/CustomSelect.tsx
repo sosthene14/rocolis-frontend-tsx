@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn, getCountryFullname } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useMemo } from "react";
-
 
 import {
   Command,
@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/popover";
 import { TypcnDelete } from "@/assets/icons/Icon";
 import { useDepartureStore, useDestinationStore } from "@/store/store";
-import { frameworks } from "@/constants/variables";
 
 interface CustomSelectProps {
   defaultvalue: string;
@@ -31,6 +30,8 @@ interface CustomSelectProps {
   notFoundText?: string;
   classNamePopover?: string;
   classNameInput?: string;
+  defaultQuery?: string;
+  datas: { [key: string]: string }[];
 }
 
 export function CustomSelect({
@@ -40,16 +41,17 @@ export function CustomSelect({
   className,
   notFoundText,
   label,
+  datas,
+  defaultQuery = "",
   classNamePopover = "w-[250px] p-0",
   classNameInput = "pb-2 my-2 text-slate-800 text-sm ",
   disabled,
 }: CustomSelectProps) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(defaultQuery);
   const { _setDestination } = useDestinationStore();
   const { _setDeparture } = useDepartureStore();
-
 
   useEffect(() => {
     if (defaultvalue?.length > 0) {
@@ -79,10 +81,10 @@ export function CustomSelect({
     }
   };
 
-  const filteredAndSortedFrameworks = useMemo(() => {
+  const filteredAndSortedDatas = useMemo(() => {
     const lowerQuery = query.toLowerCase();
-    const filtered = frameworks.filter((framework) =>
-      framework.label.toLowerCase().includes(lowerQuery)
+    const filtered = datas.filter((data) =>
+      data.label.toLowerCase().includes(lowerQuery)
     );
     return filtered.sort((a, b) => {
       const aExact = a.label.toLowerCase() === lowerQuery;
@@ -93,10 +95,9 @@ export function CustomSelect({
     });
   }, [query]);
 
-  const visibleFrameworks = useMemo(
-    () => filteredAndSortedFrameworks.slice(0, 10),
-    [filteredAndSortedFrameworks]
-  );
+  const visibleDatas = useMemo(() => filteredAndSortedDatas.slice(0, 10), [
+    filteredAndSortedDatas,
+  ]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -107,9 +108,7 @@ export function CustomSelect({
           aria-expanded={open}
           className={`${className}`}
         >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : cityType}
+          {value ? datas.find((data) => data.value === value)?.label : cityType}
           <div className="flex item-center gap-1">
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             <TypcnDelete
@@ -129,7 +128,10 @@ export function CustomSelect({
               onValueChange={setQuery}
             />
             <div className="absolute -mt-0 inset-y-0 right-10 flex items-center pr-2">
-              <TypcnDelete onClick={() => setQuery("")} className=" text-slate-400 w-5 h-5 cursor-pointer" />
+              <TypcnDelete
+                onClick={() => setQuery("")}
+                className=" text-slate-400 w-5 h-5 cursor-pointer"
+              />
             </div>
           </div>
 
@@ -138,7 +140,7 @@ export function CustomSelect({
           </CommandEmpty>
           <CommandGroup className="mt-3">
             <CommandList>
-              {visibleFrameworks.map((option) => (
+              {visibleDatas.map((option) => (
                 <CommandItem
                   className="text-sm  font-['Montserrat'] text-left font-bold text-zinc-900 text-opacity-60"
                   key={option.value}
@@ -154,7 +156,10 @@ export function CustomSelect({
                       value === option.value ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {option.label} ({getCountryFullname(option.country)})
+                  {option.label}{" "}
+                  {option.country
+                    ? `(${getCountryFullname(option.country)})`
+                    : ""}
                 </CommandItem>
               ))}
             </CommandList>

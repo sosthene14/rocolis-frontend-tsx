@@ -71,6 +71,8 @@
     }
   }
 
+
+
   @layer base {
     * {
       @apply border-border;
@@ -86,6 +88,11 @@
  
  
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 
 .custom-datepicker-2 .ant-picker-input > input::placeholder {
  /* Changer l'opacité à 0.6 */
