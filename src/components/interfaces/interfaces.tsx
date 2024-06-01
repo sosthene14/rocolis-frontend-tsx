@@ -38,3 +38,11 @@ export interface IInputField {
     isValided: boolean;
     discuss: boolean;
   }
+
+  export interface IPaginationProps {
+    sortedData: IPublishAdd[];
+    page: number;
+    setPaginatedData: React.Dispatch<React.SetStateAction<IPublishAdd[]>>;
+    setTotalPage: React.Dispatch<React.SetStateAction<number>>;
+    handleEndIndex?: (value: number) => void;
+  }

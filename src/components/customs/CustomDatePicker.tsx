@@ -20,6 +20,7 @@ interface IProps {
   maxDate?:string;
   className?: string;
   placement?: "topRight" | "bottomLeft" | "bottomRight" | "topLeft";
+  value?: string;
 }
 
 export const CustomDatePicker = ({
@@ -30,6 +31,7 @@ export const CustomDatePicker = ({
   placeholder,
   disabledDate,
   onChange,
+  value,
   placement="topRight",
   minDate,
   maxDate,
@@ -38,6 +40,7 @@ export const CustomDatePicker = ({
   return (
     <ConfigProvider locale={locale}>
       <DatePicker
+      value={(value && dayjs((value), dateFormatList[0])) as unknown as Date}
       suffixIcon={null}
         placement={placement}
         ref={ref}

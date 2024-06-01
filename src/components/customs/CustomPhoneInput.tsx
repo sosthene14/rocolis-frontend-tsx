@@ -7,6 +7,7 @@ interface IProps {
   onChange: (value: string) => void;
   isValidedPhone: React.Dispatch<React.SetStateAction<boolean>>;
   defaultValue?: string;
+  haveReseted?: boolean;
 }
 
 export const CustomPhoneInput = ({
@@ -15,9 +16,14 @@ export const CustomPhoneInput = ({
   disabled,
   onChange,
   isValidedPhone,
+  haveReseted,
 }: IProps) => {
   const [value, setValue] = useState(defaultValue || "");
   const [isValid, setIsValid] = useState(true);
+
+  useEffect(() => {
+    haveReseted && setValue("");
+  }, [haveReseted]);
 
   useEffect(() => {
     if (defaultValue) {

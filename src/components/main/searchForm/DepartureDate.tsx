@@ -1,8 +1,6 @@
 import { CustomDatePicker } from "@/components/customs/CustomDatePicker";
 import { minDate } from "@/constants/variables";
 import {
-  formatedDayJsDate,
-  isDateValidSlashed,
   slashedFormatedDate,
   unslashedFormatedDate,
 } from "@/lib/utils";
@@ -12,8 +10,6 @@ export const DepartureDate = () => {
   const { _setDate } = useDatePickerStore();
   const dateFromLsg = localStorage.getItem("departureDate");
   const convertedDate = slashedFormatedDate(dateFromLsg as string);
-  const isDateValide = isDateValidSlashed(convertedDate as string);
-  const formatedDayjs = formatedDayJsDate(convertedDate as string);
 
   return (
     <div>
@@ -24,9 +20,7 @@ export const DepartureDate = () => {
             className="border-2 custom-datepicker-2 cursor-pointer hover:bg-slate-200 font-bold bg-white dark:bg-slate-200 outline-none border-slate-200 py-3 rounded-md placeholder:text-zinc-900 text-zinc-900 text-opacity-60 text-sm font-['Montserrat']"
             placeholder="Date de départ"
             minDate={minDate}
-            defaultValue={
-              isDateValide ? (formatedDayjs as unknown as Date) : undefined
-            }
+            defaultValue={convertedDate || ""}
             onChange={(_date: Date, dateString: string | string[]) =>
               _setDate(unslashedFormatedDate(String(dateString)))
             }
