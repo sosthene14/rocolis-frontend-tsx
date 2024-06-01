@@ -53,11 +53,11 @@ const OtherNavBarComponent = () => {
           <div className="ml-2 mr-0">
             <Select>
               <SelectTrigger
-                className={`py-[22px] flex gap-2 items-center bg-slate-100 dark:bg-slate-700`}
+                className={`py-[22px] border-none flex gap-2 items-center bg-slate-100 dark:bg-slate-700`}
               >
                 <SelectValue placeholder="Role " />
-              </SelectTrigger>
-              <SelectContent className="dark:bg-slate-500">
+              </SelectTrigger> 
+              <SelectContent className="dark:bg-slate-700 border-none">
                 <SelectItem value="expeditor">Expéditeur</SelectItem>
                 <SelectItem value="traveler">Voyageur</SelectItem>
               </SelectContent>

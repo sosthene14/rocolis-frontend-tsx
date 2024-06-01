@@ -20,17 +20,18 @@ import { NavLink } from "react-router-dom";
 
 export const UserComponent = () => {
   const [isLogged] = useState(true);
+  const [open, setOpen] = useState(false)
 
   return (
     <div className=" outline-none mt-2 flex text-md font-semibold cursor-pointer">
       {isLogged ? (
         <div>
-          <DropdownMenu>
+          <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger className="outline-none">
               <SolarUserBold className="h-[2.5rem] w-[2.5rem] p-2 bg-slate-200 rounded-full" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="dark:bg-slate-700  bg-white  border-none">
-              <DropdownMenuItem className="flex gap-2 ">
+              <DropdownMenuItem className="flex gap-2 " onClick={() => setOpen(false)}>
                 <ArcticonsAdFree className="h-[1.2rem] text-md fill-current " />
                 <NavLink className="text-md" to="/your-ads"> Mes annonces</NavLink>
               </DropdownMenuItem>

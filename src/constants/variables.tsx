@@ -250,3 +250,17 @@ export const chatBotSteps = [
     trigger: "2",
   },
 ];
+
+
+export const  sortingOptions = [
+  { value: "prix-kilo-décroissant", label: "Prix Kilo (décroissant)" },
+  { value: "prix-kilo-croissant", label: "Prix Kilo (croissant)" },
+  { value: "depart-imminents", label: "Départ imminent" },
+  { value: "depart-non-imminents", label: "Départ non imminent" },
+  { value: "nombre-kilos-croissants", label: "Nombre Kilos (croissants)" },
+  {
+    value: "nombre-kilos-décroissants",
+    label: "Nombre Kilos (décroissants)",
+  },
+  { value: "date-recherchee", label: "Date recherchée" },
+];

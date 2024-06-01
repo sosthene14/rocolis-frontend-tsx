@@ -32,6 +32,7 @@ interface CustomSelectProps {
   classNameInput?: string;
   defaultQuery?: string;
   datas: { [key: string]: string }[];
+  haveReseted?: boolean;
 }
 
 export function CustomSelect({
@@ -42,8 +43,9 @@ export function CustomSelect({
   notFoundText,
   label,
   datas,
+  haveReseted,
   defaultQuery = "",
-  classNamePopover = "w-[250px] p-0",
+  classNamePopover = "w-[250px] p-0 border-none",
   classNameInput = "pb-2 my-2 text-slate-800 text-sm ",
   disabled,
 }: CustomSelectProps) {
@@ -52,6 +54,10 @@ export function CustomSelect({
   const [query, setQuery] = useState(defaultQuery);
   const { _setDestination } = useDestinationStore();
   const { _setDeparture } = useDepartureStore();
+
+  useEffect(() => {
+    haveReseted && setValue("");
+  }, [haveReseted]);
 
   useEffect(() => {
     if (defaultvalue?.length > 0) {

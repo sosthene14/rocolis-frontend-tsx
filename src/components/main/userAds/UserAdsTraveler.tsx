@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { PublishAdsTraveler } from "../publishAds/PublishAdsTraveler";
 import { IPublishAdd } from "@/components/interfaces/interfaces";
 import { initializedData } from "@/constants/variables";
+import { destructiveButton } from "@/common/ClassNames";
+import { motion } from "framer-motion";
 
 interface ILabelProps {
   htmlFor: string;
@@ -71,9 +73,7 @@ const AdsPreview = ({ setIsModifying, loadedDatas }: IAdsPreviewProps) => {
         >
           Mettre à jour
         </button>
-        <button className="inline-flex items-center justify-center px-4 py-2 text-red-500 transition duration-300 ease-in-out bg-white border border-red-500 rounded-md shadow-md hover:bg-red-100 hover:text-red-600 focus:outline-none focus:ring focus:ring-red-200">
-          Supprimer
-        </button>
+        <button className={destructiveButton}>Supprimer</button>
       </div>
     </div>
   );
@@ -86,22 +86,24 @@ export const UserAdsTraveler = ({
 }) => {
   const [isModifying, setIsModifying] = useState(false);
   return (
-    <div>
-      <div>
-        {isModifying ? (
-          <AdsPreviewed
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {isModifying ? (
+        <AdsPreviewed
+          setIsModifying={setIsModifying}
+          loadedDatas={loadedDatas}
+        />
+      ) : (
+        <div>
+          <AdsPreview
             setIsModifying={setIsModifying}
             loadedDatas={loadedDatas}
           />
-        ) : (
-          <div>
-            <AdsPreview
-              setIsModifying={setIsModifying}
-              loadedDatas={loadedDatas}
-            />
-          </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </motion.div>
   );
 };

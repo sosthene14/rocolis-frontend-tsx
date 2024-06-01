@@ -59,7 +59,7 @@ export const SearchForm = () => {
   };
   return (
     <div
-      className="bg-white py-5  rounded-xl -mt-20 w-[320px] md:w-[750px] lg:w-[1000px]  m-auto"
+      className="bg-white py-5  rounded-xl -mt-20 w-[90%] md:w-[80%] lg:w-[70%]  m-auto"
       style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
     >
       <SearchFormHeader />
