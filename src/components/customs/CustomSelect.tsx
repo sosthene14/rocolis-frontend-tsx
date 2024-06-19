@@ -22,7 +22,7 @@ import { useDepartureStore, useDestinationStore } from "@/store/store";
 
 interface CustomSelectProps {
   defaultvalue: string;
-  onChange: (value: string) => void;
+  onChange: (value: string, label?: string) => void;
   cityType: string;
   className?: string;
   label?: string;
@@ -51,6 +51,7 @@ export function CustomSelect({
 }: CustomSelectProps) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+  const [countryName, setCountryName] = useState("");
   const [query, setQuery] = useState(defaultQuery);
   const { _setDestination } = useDestinationStore();
   const { _setDeparture } = useDepartureStore();
@@ -71,10 +72,10 @@ export function CustomSelect({
 
   useEffect(() => {
     if (value?.length > 0) {
-      onChange(value);
+      onChange(value,countryName);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
+  }, [value, countryName]);
 
   const handleClear = () => {
     setValue("");
@@ -154,6 +155,9 @@ export function CustomSelect({
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
+                    setCountryName(
+                      currentValue === value ? "" : option.country
+                    );
                   }}
                 >
                   <Check

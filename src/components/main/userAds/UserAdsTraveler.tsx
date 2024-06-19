@@ -4,6 +4,7 @@ import { IPublishAdd } from "@/components/interfaces/interfaces";
 import { initializedData } from "@/constants/variables";
 import { destructiveButton } from "@/common/ClassNames";
 import { motion } from "framer-motion";
+import { EyeIcon } from "lucide-react";
 
 interface ILabelProps {
   htmlFor: string;
@@ -21,9 +22,10 @@ const Label = ({ htmlFor, labelText, value }: ILabelProps) => (
   </div>
 );
 
-interface IAdsPreviewProps {
-  setIsModifying: React.Dispatch<React.SetStateAction<boolean>>;
+export interface IAdsPreviewProps {
+  setIsModifying?: React.Dispatch<React.SetStateAction<boolean>>;
   loadedDatas: IPublishAdd;
+  seeBtn?: boolean;
 }
 const AdsPreviewed = ({ setIsModifying, loadedDatas }: IAdsPreviewProps) => {
   return (
@@ -36,10 +38,19 @@ const AdsPreviewed = ({ setIsModifying, loadedDatas }: IAdsPreviewProps) => {
   );
 };
 
-const AdsPreview = ({ setIsModifying, loadedDatas }: IAdsPreviewProps) => {
+export const AdsPreview = ({
+  setIsModifying,
+  loadedDatas,
+  seeBtn,
+}: IAdsPreviewProps) => {
   return (
-    <div className="flex flex-col mt-10 mx-auto w-96 py-7 dark:bg-slate-700 bg-slate-100  rounded-2xl shadow-xl px-5">
-      <p className="text-[15px] mb-5 text-rose-400">Annonce non validée</p>
+    <div className="flex flex-col mt-10 mx-auto w-96 py-7 dark:bg-slate-700 bg-slate-100  rounded-md shadow-xl px-5">
+      <div className="flex justify-between items-center">
+        <p className="text-[15px] mb-5 text-rose-400">Annonce non validée </p>
+        <p className="flex justify-between items-center gap-2">
+          <EyeIcon className="bg-slate-800 p-1 rounded-full" size={20} /> {loadedDatas?.viewNumber}
+        </p>
+      </div>
       <Label
         htmlFor="name"
         labelText="Nom du voyageur"
@@ -65,16 +76,17 @@ const AdsPreview = ({ setIsModifying, loadedDatas }: IAdsPreviewProps) => {
         labelText="Date d'arrivée"
         value={loadedDatas?.arrivalDate as string}
       />
-
-      <div className="flex gap-8 mt-5 justify-center">
-        <button
-          className="gradient-btn p-3 rounded-md"
-          onClick={() => setIsModifying(true)}
-        >
-          Mettre à jour
-        </button>
-        <button className={destructiveButton}>Supprimer</button>
-      </div>
+      {seeBtn && (
+        <div className="flex gap-8 mt-5 justify-center">
+          <button
+            className="gradient-btn p-2 rounded-md"
+            onClick={() => setIsModifying && setIsModifying(true)}
+          >
+            Mettre à jour
+          </button>
+          <button className={destructiveButton}>Supprimer</button>
+        </div>
+      )}
     </div>
   );
 };
@@ -101,6 +113,7 @@ export const UserAdsTraveler = ({
           <AdsPreview
             setIsModifying={setIsModifying}
             loadedDatas={loadedDatas}
+            seeBtn={true}
           />
         </div>
       )}

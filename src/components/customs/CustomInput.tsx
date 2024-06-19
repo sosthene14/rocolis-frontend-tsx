@@ -8,7 +8,7 @@ export const InputField = ({ label, ...props }: IInputField) => (
         {label} <span className="text-red-500">*</span>
       </label>
       <input
-        className={publishAddInputStyle}
+        className={`mb-1 ${publishAddInputStyle} `}
         {...props}
       />
     </div>

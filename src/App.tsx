@@ -13,6 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Register } from "./components/main/register/Register";
 import { Title } from "./components/common/title/Title";
 import { HandlerUserAdsTraveler } from "./components/main/userAds/HandlerUserAdsTraveler";
+import { ManageNotifications } from "./components/main/manageNotifications/ManageNotifications";
+import { ProfilInfo } from "./components/main/profilInfo/ProfilInfo";
 
 const App = () => {
   return (
@@ -26,6 +28,22 @@ const App = () => {
               element={
                 <>
                   <Title title={"Publier une annonce"} /> <PublishAdsTraveler />
+                </>
+              }
+            />
+            <Route
+              path="/profil-info"
+              element={
+                <div className=" overflow-x-hidden">
+                  <Title title={""} /> <ProfilInfo />
+                </div>
+              }
+            />
+             <Route
+              path="/manage-notifications"
+              element={
+                <>
+                  <Title title={"Gérer les notifications"} /> <ManageNotifications />
                 </>
               }
             />

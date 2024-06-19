@@ -20,7 +20,7 @@ import { NavLink } from "react-router-dom";
 
 export const UserComponent = () => {
   const [isLogged] = useState(true);
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <div className=" outline-none mt-2 flex text-md font-semibold cursor-pointer">
@@ -31,18 +31,41 @@ export const UserComponent = () => {
               <SolarUserBold className="h-[2.5rem] w-[2.5rem] p-2 bg-slate-200 rounded-full" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="dark:bg-slate-700  bg-white  border-none">
-              <DropdownMenuItem className="flex gap-2 " onClick={() => setOpen(false)}>
-                <ArcticonsAdFree className="h-[1.2rem] text-md fill-current " />
-                <NavLink className="text-md" to="/your-ads"> Mes annonces</NavLink>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="flex gap-2">
-                <LineMdBellLoop />
-                Gérer les notifications
-              </DropdownMenuItem>
-              <DropdownMenuItem className="flex gap-2">
-                <MageDashboard4Fill />
-                Vue d'ensemble
-              </DropdownMenuItem>
+              <NavLink
+                onClick={() => setOpen(false)}
+                className="text-md"
+                to="/your-ads"
+              >
+                <DropdownMenuItem
+                  className="flex gap-2 "
+                  onClick={() => setOpen(false)}
+                >
+                  <ArcticonsAdFree className="h-[1.2rem] text-md fill-current " />{" "}
+                  Mes annonces
+                </DropdownMenuItem>
+              </NavLink>
+
+              <NavLink
+                onClick={() => setOpen(false)}
+                className="text-md"
+                to="/manage-notifications"
+              >
+                <DropdownMenuItem className="flex gap-2">
+                  <LineMdBellLoop />
+                  Gérer les notifications
+                </DropdownMenuItem>
+              </NavLink>
+
+              <NavLink
+                onClick={() => setOpen(false)}
+                className="text-md"
+                to="/profil-info"
+              >
+                <DropdownMenuItem className="flex gap-2">
+                  <MageDashboard4Fill />
+                  Vue d'ensemble
+                </DropdownMenuItem>
+              </NavLink>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="flex gap-2">
                 <StreamlineLogout1Solid />

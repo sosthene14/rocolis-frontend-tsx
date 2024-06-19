@@ -9,17 +9,17 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
-
     return (
       <div className="relative">
         <Input
+          autoComplete="true"
           type={showPassword ? "text" : "password"}
           className={cn("hide-password-toggle pr-10", className)}
           ref={ref}
           {...props}
         />
         <button
-          className="absolute right-0 z-50 top-0 h-full px-3 py-2 hover:bg-transparent"
+          className="absolute right-10 md:right-0 z-50 top-0 h-full px-3 py-2 hover:bg-transparent"
           type="button"
           onClick={() => setShowPassword(!showPassword)}
         >

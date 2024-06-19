@@ -38,7 +38,7 @@ const OtherNavBarComponent = () => {
 
  const NavBar = () => {
   return (
-    <nav className="shadow-lg dark:bg-slate-800 p-1">
+    <nav className="shadow-lg overflow-x-hidden dark:bg-slate-800 p-1">
       <div className="flex justify-between items-center px-1 lg:px-10 pt-3 md:pt-5 pb-3">
         <MenuList menuNavBar={menuNavBar} />
         <div>
@@ -51,11 +51,11 @@ const OtherNavBarComponent = () => {
         </div>
         <div className="flex gap-2 sm:gap-5 items-center">
           <div className="ml-2 mr-0">
-            <Select>
+            <Select >
               <SelectTrigger
                 className={`py-[22px] border-none flex gap-2 items-center bg-slate-100 dark:bg-slate-700`}
               >
-                <SelectValue placeholder="Role " />
+                <SelectValue  placeholder="Role " />
               </SelectTrigger> 
               <SelectContent className="dark:bg-slate-700 border-none">
                 <SelectItem value="expeditor">Expéditeur</SelectItem>

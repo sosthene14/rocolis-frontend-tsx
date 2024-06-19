@@ -108,8 +108,8 @@ export const PublishAdsTraveler = ({
     data.publicationDate = new Date();
     data.departureDate = convertToDate(
       (data.departureDate as unknown) as string
-    );
-    data.arrivalDate = convertToDate((data.arrivalDate as unknown) as string);
+    )!;
+    data.arrivalDate = convertToDate((data.arrivalDate as unknown) as string)!;
     data.availableKilos = Number(data.availableKilos);
   };
 
@@ -134,7 +134,7 @@ export const PublishAdsTraveler = ({
       <LoaderCircle isLoading={false} />
 
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 dark:bg-slate-700 bg-slate-200/50 w-[90%] xl:w-3/4 mx-auto rounded-xl py-10 items-center justify-center mt-20 gap-0 sm:gap-5  ">
+        <div className="grid grid-cols-1 dark:bg-slate-700 bg-slate-200/50 w-[90%] xl:w-3/4 mx-auto rounded-md py-10 items-center justify-center mt-20 gap-0 sm:gap-5  ">
           <div className="flex mx-2 items-center gap-4 lg:gap-16 flex-wrap justify-center">
             <InputField
               label="Nom du voyageur"

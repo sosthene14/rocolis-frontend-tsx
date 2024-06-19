@@ -4,6 +4,8 @@ import dayjs from "dayjs";
 import countries from "i18n-iso-countries";
 import frLocale from 'i18n-iso-countries/langs/fr.json'
 countries.registerLocale(frLocale)
+const timeFormat: Intl.DateTimeFormatOptions = { day: "numeric", month: "long", year: "numeric" }
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -114,10 +116,22 @@ export const compareDates = (
   return 0;
 };
 
-export const convertToDate = (dateString: string) => {
-  const [day, month, year] = dateString.split("/").map(Number);
-  return new Date(year, month - 1, day);
+export const convertToDate = (dateString: string): Date | null => {
+  try {
+    const [day, month, year] = dateString.split("/").map(Number);
+    if (isNaN(day) || isNaN(month) || isNaN(year)) {
+      throw new Error("Invalid date components");
+    }
+    const date = new Date(year, month - 1, day);
+    if (isNaN(date.getTime())) {
+      throw new Error("Invalid date");
+    }
+    return date;
+  } catch (error) {
+    return null;
+  }
 };
+
 
 
 export const getCountryFullname = (countryCode:string) => {
@@ -135,4 +149,11 @@ export const getSystemTheme = () => {
   } else {
     return 'light';
   }
+};
+
+export const getCurrentDateInFrench = (dateToConvert: string) => {
+  const timestamp = convertToDate(dateToConvert);
+  const dateObject = new Date(timestamp || Date.now());
+  const formattedDate = dateObject.toLocaleDateString("fr-FR", timeFormat);
+  return formattedDate;
 };

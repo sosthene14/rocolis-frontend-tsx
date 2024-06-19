@@ -1,3 +1,4 @@
+import { INotificationsData } from "@/components/interfaces/interfaces";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
@@ -70,3 +71,22 @@ export const useDestinationStore = create<IDestination>()(
     )
   )
 );
+interface IUserNotifications {
+  notificationsDatas: INotificationsData[];
+  _setNotificationsDatas: (notificationsDatas: INotificationsData[]) => void;
+
+}
+
+export const useNotificationsDatasStore = create<IUserNotifications>()(
+  devtools(
+    persist(
+      (set) => ({
+        notificationsDatas: [],
+        _setNotificationsDatas: (notificationsDatas: INotificationsData[]) => set({ notificationsDatas }),
+      }),
+      {
+        name: "notifications",
+      }
+    )
+  )
+)

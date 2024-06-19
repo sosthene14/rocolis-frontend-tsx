@@ -46,3 +46,20 @@ export interface IInputField {
     setTotalPage: React.Dispatch<React.SetStateAction<number>>;
     handleEndIndex?: (value: number) => void;
   }
+
+  export interface INotificationsData {
+    uuid?:string
+    notificationDepartureCity: string;
+    notificationDepartureCountry:string;
+    notifictionDestinationCountry: string;
+    notificationDestinationCity: string;
+    notificationDepartureDate: string | undefined;
+    isActive: boolean;
+  }
+
+  export interface userProfil {
+    name:string;
+    firstName:string;
+    email:string;
+    phoneNumber:string
+  }

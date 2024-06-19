@@ -28,7 +28,7 @@ export const Footer = () => {
   const [email, setEmail] = useState("");
 
   return (
-    <div className="flex flex-col justify-center items-center gap-16 pt-8 mt-[100px] bg-neutral-800 dark:bg-slate-700">
+    <div className="flex flex-col   justify-center items-center gap-16 pt-8 mt-[100px] bg-neutral-800 dark:bg-slate-700">
       <div className="text-center">
         <p className="text-gray-300 mb-10 text-[1.5rem] font-bold font-['Raleway']">
           {"S'inscrire à la Newsletter"}

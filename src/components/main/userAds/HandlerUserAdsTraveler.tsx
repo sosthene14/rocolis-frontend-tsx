@@ -41,7 +41,7 @@ export const HandlerUserAdsTraveler = () => {
       </div>
       <div className="flex justify-center gap-5 flex-wrap items-center">
         {paginatedData.map((loadedData: IPublishAdd, index: number) => (
-          <UserAdsTraveler loadedDatas={loadedData} key={index} />
+          <UserAdsTraveler  loadedDatas={loadedData} key={index} />
         ))}
       </div>
       <PaginationUI endIndex={endIndex} dataLength={sortedDatas.length} currentPage={handleCurrentPage} totalPages={totalPages} />

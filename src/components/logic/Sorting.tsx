@@ -13,10 +13,10 @@ import { useEffect } from "react";
 import { convertToDate } from "@/lib/utils";
   
 const sortByDateRecentToOld = (a: IPublishAdd, b: IPublishAdd): number =>
-    convertToDate(a.departureDate as string).getTime() - convertToDate(b.departureDate as string).getTime();
+    convertToDate(a.departureDate as string)!.getTime() - convertToDate(b.departureDate as string)!.getTime();
   
   const sortByDateOldToRecent = (a: IPublishAdd, b: IPublishAdd): number =>
-    convertToDate(b.departureDate as string).getTime() - convertToDate(a.departureDate as string).getTime();
+    convertToDate(b.departureDate as string)!.getTime() - convertToDate(a.departureDate as string)!.getTime();
   const sortByKilosAvailableMaxMin = (a: IPublishAdd, b: IPublishAdd): number =>
     a.availableKilos - b.availableKilos;
   

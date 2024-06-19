@@ -1,5 +1,9 @@
 import { destinationsList } from "@/assets/images/Images";
-import { IPublishAdd } from "@/components/interfaces/interfaces";
+import {
+  INotificationsData,
+  IPublishAdd,
+  userProfil,
+} from "@/components/interfaces/interfaces";
 import { getCurrentDateSlashFormat } from "@/lib/utils";
 import cities from "./cities.json";
 
@@ -251,8 +255,7 @@ export const chatBotSteps = [
   },
 ];
 
-
-export const  sortingOptions = [
+export const sortingOptions = [
   { value: "prix-kilo-décroissant", label: "Prix Kilo (décroissant)" },
   { value: "prix-kilo-croissant", label: "Prix Kilo (croissant)" },
   { value: "depart-imminents", label: "Départ imminent" },
@@ -264,3 +267,75 @@ export const  sortingOptions = [
   },
   { value: "date-recherchee", label: "Date recherchée" },
 ];
+
+export const mockedNotifications: INotificationsData[] = [
+  {
+    uuid: crypto.randomUUID(),
+    notificationDepartureCity: "",
+    notificationDestinationCity: "",
+    notificationDepartureCountry: "",
+    notifictionDestinationCountry: "",
+    notificationDepartureDate: undefined,
+    isActive: false,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    notificationDepartureCity: "",
+    notificationDestinationCity: "",
+    notificationDepartureCountry: "",
+    notifictionDestinationCountry: "",
+    notificationDepartureDate: undefined,
+    isActive: true,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    notificationDepartureCity: "",
+    notificationDestinationCity: "",
+    notificationDepartureCountry: "",
+    notifictionDestinationCountry: "",
+    notificationDepartureDate: "04/01/2022",
+    isActive: true,
+  },
+  {
+    uuid: crypto.randomUUID(),
+    notificationDepartureCity: "",
+    notificationDestinationCity: "",
+    notificationDepartureCountry: "",
+    notifictionDestinationCountry: "",
+    notificationDepartureDate: undefined,
+    isActive: true,
+  },
+];
+
+export const profilComponentLink = [
+  {
+    screenTitle: "first",
+    title: "Editer le profil",
+  },
+  {
+    screenTitle: "second",
+    title: "Modifier le mot de passe",
+  },
+  {
+    screenTitle: "third",
+    title: "Modifier le numéro de téléphone",
+  },
+  {
+    screenTitle: "fourth",
+    title: "Nombre total de vues",
+  },
+];
+
+export const userProfilData: userProfil = {
+  name: "sosthene",
+  firstName: "legath",
+  email: "sosthene@gmail.com",
+  phoneNumber:"+221773101160"
+};
+
+export const initializedDataProfil: userProfil = {
+  name: "",
+  firstName: "",
+  email: "",
+  phoneNumber:""
+};
