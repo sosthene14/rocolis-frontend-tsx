@@ -26,17 +26,17 @@ export const menuAccount = [
   {
     icon: <ArcticonsAdFree className="fill-current w-5 h-5" />,
     label: "Mes annonces",
-    link:""
+    link:"/your-ads"
   },
   {
     icon: <LineMdBellLoop className="fill-current w-5 h-5" />,
     label: "Gérer les notifications",
-    link:""
+    link:"/manage-notifications"
   },
   {
     icon: <MageDashboard4Fill className="fill-current w-5 h-5" />,
     label: "Vue d'ensemble",
-    link:""
+    link:"/profil-info"
   }
 ];
 

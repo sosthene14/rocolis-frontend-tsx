@@ -13,7 +13,8 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Hamburger from "hamburger-react";
+import { Turn as Hamburger } from 'hamburger-react'
+
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/customs/ModeToggle";
 import {
@@ -30,17 +31,17 @@ export const Dropdown = () => {
         setIsOpen(!isOpen)
     }
   return (
-    <DropdownMenu onOpenChange={onDropdownChange}>
+    <DropdownMenu  open={isOpen} onOpenChange={onDropdownChange}>
       <DropdownMenuTrigger asChild className="focus-visible:ring-transparent">
         <Button
           variant="ghost"
-          className="ring-0 w-20 focus-visible:ring-transparent focus:ring-0 border-0 border-none"
+          className="ring-0 w-20 hover:bg-transparent focus-visible:ring-transparent focus:ring-0 border-0 border-none"
           style={{ outline: "none", width: "70px", border: "none" }}
         >
-          <Hamburger toggled={isOpen} />
+          <Hamburger hideOutline={true} toggled={isOpen} />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 dark:bg-slate-800">
+      <DropdownMenuContent className="w-56 block lg:hidden dark:bg-slate-800">
         <DropdownMenuLabel>
           <ModeToggle />
         </DropdownMenuLabel>
@@ -54,7 +55,7 @@ export const Dropdown = () => {
             <DropdownMenuPortal>
               <DropdownMenuSubContent className="dark:bg-slate-800 -mr-16">
                 {menuAccount.map((item, index) => (
-                  <DropdownMenuItem key={index} className="flex gap-2">
+                  <DropdownMenuItem onClick={() => setIsOpen(false)} key={index} className="flex gap-2">
                     {item.icon as ReactNode}
                     <p className="text-neutral-900 text-md font-semibold cursor-pointer">
                       <NavLink
