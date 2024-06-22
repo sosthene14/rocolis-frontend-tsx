@@ -1,4 +1,3 @@
-import { Bot } from "../common/bot/Bot";
 import {Filigrane} from "../common/filigrane/Filigrane";
 import { Footer } from "../common/footer/Footer";
 import {NavBar} from "../common/navbar/NavBar";
@@ -21,7 +20,6 @@ export const Home = () => {
       <Separator className="w-[90%] mb-10 h-[2px] mx-auto bg-opacity-10 bg-slate-200" />
       <ImminentDeparture />
       <Filigrane />
-      <Bot />
       <Separator className="w-[90%] mb-10 h-[2px] mx-auto bg-opacity-10 bg-slate-200" />
       <AllDestinations />
       <Separator className="w-[90%] mb-10 h-[2px] mx-auto bg-opacity-10 bg-slate-200" />

@@ -2,15 +2,18 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import dayjs from "dayjs";
 import countries from "i18n-iso-countries";
-import frLocale from 'i18n-iso-countries/langs/fr.json'
-countries.registerLocale(frLocale)
-const timeFormat: Intl.DateTimeFormatOptions = { day: "numeric", month: "long", year: "numeric" }
+import frLocale from "i18n-iso-countries/langs/fr.json";
+
+countries.registerLocale(frLocale);
+const timeFormat: Intl.DateTimeFormatOptions = {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+};
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
-
 
 export const getCurrentDateSlashFormat = () => {
   const currentDate = new Date();
@@ -132,22 +135,23 @@ export const convertToDate = (dateString: string): Date | null => {
   }
 };
 
-
-
-export const getCountryFullname = (countryCode:string) => {
+export const getCountryFullname = (countryCode: string) => {
   try {
-    const countryObj = countries.getName(countryCode, "fr")
-    return countryObj
+    const countryObj = countries.getName(countryCode, "fr");
+    return countryObj;
   } catch (error) {
     console.error("Error getting country name:", error);
   }
 };
 
 export const getSystemTheme = () => {
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    return "dark";
   } else {
-    return 'light';
+    return "light";
   }
 };
 

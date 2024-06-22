@@ -1,16 +1,15 @@
 import { LogosGoogleIcon } from "@/assets/icons/Icon";
 import { ImmeubleBgLogin } from "@/assets/images/Images";
-import { linkClassNames, publishAddInputStyle } from "@/common/ClassNames";
+import { linkClassNames, registerInput } from "@/common/ClassNames";
 import { ModeToggle } from "@/components/customs/ModeToggle";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
-import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 const Login = () => {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+    <div>
       <div className="absolute right-10 -mt-10">
         <ModeToggle />
       </div>
@@ -20,20 +19,20 @@ const Login = () => {
           <FormSection />
         </div>
       </form>
-    </motion.div>
+    </div>
   );
 };
 
 const ImageSection = () => (
-  <div className="z-0">
-    <div className="h-[805px] mt-2 gap-5 w-[416px] hidden lg:inline-flex">
-      <img className="h-[570px] rounded-[30px]" src={ImmeubleBgLogin} alt="luggage caroussel" />
+  <div className="z-0 overflow-y-hidden">
+    <div className="h-[805px] mt-5 gap-5 w-[416px] hidden lg:inline-flex">
+      <img className="h-[565px] rounded-[30px]" src={ImmeubleBgLogin} alt="luggage caroussel" />
     </div>
   </div>
 );
 
 const FormSection = () => (
-  <div className="w-[350px] md:w-[580px] flex flex-col sticky lg:relative right-[90px] z-20 mt-0 lg:-mt-[225px] shadow-sm rounded-xl py-8 bg-slate-100 dark:bg-slate-700">
+  <div className="w-[350px] md:w-[580px] flex flex-col sticky lg:relative right-[100px] z-20 mt-0 lg:-mt-[225px] shadow-sm rounded-xl py-8 bg-slate-100 dark:bg-slate-700">
     <FormHeader />
     <FormFields />
     <ForgotPassword />
@@ -60,11 +59,11 @@ const FormHeader = () => (
 const FormFields = () => (
   <div className="flex flex-col justify-center items-center">
     <Field label="E-mail">
-      <Input placeholder="E-mail" type="email" className={publishAddInputStyle} />
+      <Input style={{width: "300px"}} placeholder="E-mail" type="email" className={registerInput} />
       <ToastContainer />
     </Field>
     <Field label="Mot de passe">
-      <PasswordInput placeholder="Mot de passe" className={`${publishAddInputStyle} py-[1.2rem] z-10`} />
+      <PasswordInput style={{width: "300px"}} placeholder="Mot de passe" className={`${registerInput} w-[400px] py-[1.2rem] z-10`} />
     </Field>
   </div>
 );
@@ -120,8 +119,8 @@ const OrDivider = () => (
 );
 
 
-export const GoogleLogin = () => (
-  <div className="flex mx-auto gradient-btn justify-center items-center gap-3 w-[280px] pl-5 transition-all duration-100 border-2 rounded-xl border-[#7C838A] dark:border-white">
+export const GoogleLogin = ({handleHaveSubmitedGoogle}: {handleHaveSubmitedGoogle?: (value: boolean) => void}) => (
+  <div onClick={() => handleHaveSubmitedGoogle && handleHaveSubmitedGoogle(true)} className="flex mx-auto gradient-btn justify-center items-center gap-3 w-[280px] pl-5 transition-all duration-100 border-2 rounded-xl border-[#7C838A] dark:border-white">
     <div className="flex-col cursor-pointer justify-center items-center inline-flex">
       <LogosGoogleIcon className="w-[30px]" />
     </div>

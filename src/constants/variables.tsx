@@ -2,6 +2,7 @@ import { destinationsList } from "@/assets/images/Images";
 import {
   INotificationsData,
   IPublishAdd,
+  registeringUser,
   userProfil,
 } from "@/components/interfaces/interfaces";
 import { getCurrentDateSlashFormat } from "@/lib/utils";
@@ -338,4 +339,21 @@ export const initializedDataProfil: userProfil = {
   firstName: "",
   email: "",
   phoneNumber:""
+};
+
+
+export const initializedRegistringData: registeringUser = {
+  name: "",
+  firstName: "",
+  email: "",
+  role: "",
+  password: "",
+  isVerified: false,
+  isGoogle: false,
+  isbanned: false,
+  loggin_info: {},
+  total_ads_expeditor: 0,
+  total_ads_traveler: 0,
+  confirmation_code_attempts: 0,
+  created: new Date(),
 };
