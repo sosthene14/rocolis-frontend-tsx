@@ -5,7 +5,7 @@ import { HeroBackgroundStyle } from '@/common/ClassNames';
 export const Hero = () => {
 
   return (
-    <div>
+    <div className="fade-in z-10">
       <div style={HeroBackgroundStyle}>
         <div className="mb-[70px]">
           <div className="flex-col justify-start items-center gap-1 flex">

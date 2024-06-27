@@ -1,128 +1,117 @@
-import {
-  Carousel,
-  CarouselApi,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import { useEffect, useState } from "react";
-import Autoplay from "embla-carousel-autoplay";
+import { useEffect, useRef, useState } from "react";
 import { picsList } from "@/assets/images/Images";
 import { ToastContainer } from "react-toastify";
-import {CardAds} from "../common/cardsAds/CardAds";
+import { CardAds } from "../common/cardsAds/CardAds";
+import Slider from "react-slick";
+import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 
 export function CustomCarousel() {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  const [, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
-
-  const slideTo = (index: number) => {
-    if (!api) {
-      return;
-    }
-    api.scrollTo(index);
-  };
-
-  const handlePrevious = () => {
-    if (!api) {
-      return;
-    }
-    api.scrollPrev();
-  };
-
-  const handleNext = () => {
-    if (!api) {
-      return;
-    }
-    api.scrollNext();
-  };
+  const [current] = useState(0);
+  const sliderRef = useRef<Slider | null>(null);
 
   const handlePopoverClick = (event: React.MouseEvent) => {
+    if (sliderRef.current) sliderRef.current.slickPause();
     event.stopPropagation();
+  };
+  const play = () => {
+    if (sliderRef.current) sliderRef.current.slickPlay();
+  };
+
+  useEffect(() => {
+    play();
+  }, []);
+  const [, setSlideIndex] = useState(0);
+  const [updateCount, setUpdateCount] = useState(0);
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    initialSlide: 1,
+    pauseOnHover: true,
+
+    afterChange: () => setUpdateCount(updateCount + 1),
+    beforeChange: (_current: number, next: number) => setSlideIndex(next),
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          infinite: true,
+          slidesToScroll: 1,
+          dots: true,
+          centerMode: true,
+          initialSlide: 1,
+          variableWidth: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          dots: true,
+          centerMode: true,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          variableWidth: true,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          dots: true,
+          centerMode: true,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          variableWidth: true,
+        },
+      },
+    ],
   };
 
   return (
-    <div>
+    <div className="">
       <ToastContainer />
-      <Carousel
-        plugins={[
-          Autoplay({
-            delay: 2000,
-          }),
-        ]}
-        setApi={setApi}
-        opts={{
-          align: "center",
-          loop: true,
-        }}
-      >
-        <CarouselContent>
-          {Array.from({ length: 6 }).map((_, index) => (
-            <CarouselItem
-              key={index}
-              className="basis-[20%] sm:basis-1/3 md:basis-1/3 lg:basis-1/4"
-            >
-             <CardAds index={index} current={current} shareIndex={()=>slideTo(index)} handlePopoverClick={handlePopoverClick} picsList={picsList} />
-            </CarouselItem>
+
+      <div className="slider-container relative overflow-y-hidden h-96">
+        <Slider
+          arrows={false}
+          className="h-[500px] overflow-y-hidden"
+          ref={sliderRef}
+          dotsClass="hidden flex gap-5"
+          {...settings}
+        >
+          {Array.from({ length: 10 }).map((_, index) => (
+            <>
+              <CardAds
+                key={index}
+                index={index}
+                current={current}
+                shareIndex={() => {}}
+                handlePopoverClick={handlePopoverClick}
+                picsList={picsList}
+              />
+            </>
           ))}
-        </CarouselContent>
-      </Carousel>
+        </Slider>
 
-      <div className="flex  justify-center gap-2 mt-5">
-        {Array.from({ length: 6 }).map((_, index) => (
-          <div
-            onClick={() => slideTo(index)}
-            key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === current - 1
-                ? "bg-[#10837F] dark:bg-[#10837F]"
-                : "bg-slate-400 dark:bg-white"
-            }`}
-          ></div>
-        ))}
-        <svg
-          onClick={handlePrevious}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          className=" absolute cursor-pointer w-10 h-10 sm:w-12 sm:h-12 bg-slate-400 dark:bg-slate-400 -mt-[300px] left-3 text-white p-2 rounded-full z-10"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
+        <div className=" mx-auto -mt-24 sm:mt-10 w-[10%] sm:w-[30%] flex justify-between">
+          <ArrowLeftCircle
+            size={35}
+            className="hover:bg-opacity-50 cursor-pointer left-0 -translate-y-1/2  flex justify-between items-center rounded-full hover:bg-slate-700 transition-all duration-75"
+            onClick={() => sliderRef.current?.slickPrev()}
           />
-        </svg>
-
-        <svg
-          onClick={handleNext}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          className=" absolute cursor-pointer w-10 h-10 sm:w-12 sm:h-12 bg-slate-400 dark:bg-slate-400 -mt-[300px] right-3 text-white p-2 rounded-full z-10"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
+          <ArrowRightCircle
+            size={35}
+            className="hover:bg-opacity-50 cursor-pointer  right-0  -translate-y-1/2  flex justify-between items-center rounded-full hover:bg-slate-700 transition-all duration-75"
+            onClick={() => sliderRef.current?.slickNext()}
           />
-        </svg>
+        </div>
       </div>
     </div>
   );

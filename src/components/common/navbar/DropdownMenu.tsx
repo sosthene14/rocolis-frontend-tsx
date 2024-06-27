@@ -23,10 +23,18 @@ import {
 import { NavLink } from "react-router-dom";
 import { ReactNode, useState } from "react";
 import { menuAccount, menuNavBar } from "../../../constants/links";
+import Cookies from "js-cookie";
+import { useAuthStore } from "@/store/store";
 
 export const Dropdown = () => {
     const [isOpen, setIsOpen] = useState(false)
-
+    const { _setIsAuth } = useAuthStore();
+    const handleLogout = () => {
+      Cookies.remove("access_token");
+      Cookies.remove("refresh_token");
+      _setIsAuth(false);
+      window.location.reload();
+    };
     const onDropdownChange = () =>{
         setIsOpen(!isOpen)
     }
@@ -89,9 +97,9 @@ export const Dropdown = () => {
         ))}
 
         <DropdownMenuSeparator className="bg-slate-200" />
-        <DropdownMenuItem className="flex gap-2">
+        <DropdownMenuItem onClick={handleLogout} className="flex gap-2">
           <StreamlineLogout1Solid className="w-4 h-4 fill-current" />
-          <span className="font-semibold">Se déconnecter</span>
+          <span className="font-semibold">Deconnexion</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

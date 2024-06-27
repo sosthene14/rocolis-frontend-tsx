@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ToastContainer } from "react-toastify";
 import { LoaderCircle } from "@/assets/animations/LoaderCircle";
 import { CustomDatePicker } from "@/components/customs/CustomDatePicker";
@@ -42,9 +41,9 @@ export const PublishAdsTraveler = ({
   const [data, setData] = useState<IPublishAdd>(loadedDatas || initializedData);
   const [haveReseted, setHaveReseted] = useState(false);
   const maxDepartureDate =
-    data.arrivalDate && removeOneDay((data.arrivalDate as unknown) as string);
+    data.arrivalDate && removeOneDay(data.arrivalDate as unknown as string);
   const minDateArrivel =
-    data.departureDate && addOneDay((data.departureDate as unknown) as string);
+    data.departureDate && addOneDay(data.departureDate as unknown as string);
   const theme = useTheme().theme;
   const systemTheme = getSystemTheme();
   const isValidPath = window.location.pathname == "/publish-ad";
@@ -103,14 +102,15 @@ export const PublishAdsTraveler = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    data.kilosPrice = Number(data.kilosPrice);
-    data.expirationDate = data.arrivalDate;
-    data.publicationDate = new Date();
-    data.departureDate = convertToDate(
-      (data.departureDate as unknown) as string
-    )!;
-    data.arrivalDate = convertToDate((data.arrivalDate as unknown) as string)!;
-    data.availableKilos = Number(data.availableKilos);
+    setData((values) => ({
+      ...values,
+      kilosPrice: Number(data.kilosPrice),
+      expirationDate: data.arrivalDate,
+      publicationDate: new Date(),
+      availableKilos: Number(data.availableKilos),
+      departureDate: convertToDate(data.departureDate as unknown as string)!,
+      arrivalDate: convertToDate(data.arrivalDate as unknown as string)!,
+    }));
   };
 
   const handleResetInputs = () => {
@@ -125,10 +125,8 @@ export const PublishAdsTraveler = ({
   }, [haveReseted]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <div
+     
     >
       <ToastContainer />
       <LoaderCircle isLoading={false} />
@@ -198,7 +196,7 @@ export const PublishAdsTraveler = ({
                 Date de départ <span className="text-red-500">*</span>
               </label>
               <CustomDatePicker
-              value={data.departureDate as string}
+                value={data.departureDate as string}
                 defaultValue={data.departureDate as string}
                 required={true}
                 maxDate={maxDepartureDate}
@@ -347,6 +345,6 @@ export const PublishAdsTraveler = ({
           </div>
         </div>
       </form>
-    </motion.div>
+    </div>
   );
 };

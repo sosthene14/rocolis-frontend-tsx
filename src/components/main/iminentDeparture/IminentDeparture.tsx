@@ -13,7 +13,7 @@ export const ImminentDeparture = () => {
         </p>
       </div>
       <div className="  place-items-center">
-        <div className="flex flex-wrap justify-center">
+        <div className="flex flex-wrap gap-3 justify-center">
           {Array.from({ length: 5 }).map((_, index: number) => (
             <div
               key={index}

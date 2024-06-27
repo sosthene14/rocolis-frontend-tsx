@@ -13,7 +13,7 @@ import { ProfilTotalAds } from "./ProfilTotalAds";
 export const ProfilInfo = () => {
   const [activeScreen, setActiveScreen] = useState("");
   return (
-    <form className="w-full overflow-x-hidden grid grid-cols-1 ml-5 md:ml-0 md:grid-cols-2  md:place-items-center">
+    <form className="w-full overflow-x-hidden grid grid-cols-1 ml-5 lg:ml-0 lg:grid-cols-2  lg:place-items-center">
       <div >
         <ProfilHeader />
         <p className="text-['Montserrat'] font-bold mt-10">General</p>
@@ -41,12 +41,12 @@ export const ProfilInfo = () => {
 const ProfilHeader = () => {
   return (
     <div className="flex overflow-x-hidden  items-center gap-5 mt-10 ">
-      <div className="bg-slate-700 p-2 rounded-full">
+      <div className="dark:bg-slate-700 bg-slate-200  p-2 rounded-full">
         <UserIcon />
       </div>
       <div className="flex justify-start flex-col items-start">
         <p className="text-['Montserrat'] font-bold ">sosthene / General</p>
-        <span className="text-slate-400 text-[14px]">
+        <span className="text-slate-400 mr-8 text-[14px]">
           Mettez à jour vos informations et consultez vos données
         </span>
       </div>

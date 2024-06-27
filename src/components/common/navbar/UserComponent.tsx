@@ -17,10 +17,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useAuthStore } from "@/store/store";
 
 export const UserComponent = () => {
   const [isLogged] = useState(true);
   const [open, setOpen] = useState(false);
+  const { _setIsAuth } = useAuthStore();
+
+  const handleLogout = () => {
+    Cookies.remove("access_token");
+    Cookies.remove("refresh_token");
+    _setIsAuth(false);
+    window.location.reload();
+  };
 
   return (
     <div className=" outline-none mt-2 flex text-md font-semibold cursor-pointer">
@@ -67,7 +77,7 @@ export const UserComponent = () => {
                 </DropdownMenuItem>
               </NavLink>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="flex gap-2">
+              <DropdownMenuItem onClick={handleLogout} className="flex gap-2">
                 <StreamlineLogout1Solid />
                 Deconnexion
               </DropdownMenuItem>

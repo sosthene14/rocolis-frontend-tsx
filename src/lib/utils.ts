@@ -3,6 +3,8 @@ import { twMerge } from "tailwind-merge";
 import dayjs from "dayjs";
 import countries from "i18n-iso-countries";
 import frLocale from "i18n-iso-countries/langs/fr.json";
+import Cookies from "js-cookie"
+import { jwtDecode } from "jwt-decode";
 
 countries.registerLocale(frLocale);
 const timeFormat: Intl.DateTimeFormatOptions = {
@@ -161,3 +163,17 @@ export const getCurrentDateInFrench = (dateToConvert: string) => {
   const formattedDate = dateObject.toLocaleDateString("fr-FR", timeFormat);
   return formattedDate;
 };
+
+export const setCookies = (key: string, value: string) => {
+  Cookies.set(key, value);
+}
+
+export const getSubFromAccessToken = (accessToken: string) => {
+  const decodedToken = jwtDecode(accessToken);
+  return decodedToken?.sub;
+}
+
+export const Logout = () => {
+  Cookies.remove("access_token");
+  Cookies.remove("refresh_token");
+}

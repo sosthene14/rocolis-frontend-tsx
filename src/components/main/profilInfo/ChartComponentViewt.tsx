@@ -201,7 +201,7 @@ const ChartComponentView: React.FC<Props> = ({ data }) => {
       <div className="mt-2 text-sm">
         Total Vues: {getTotalViews()}
       </div>
-      <div className="w-full h-[400px] flex justify-center">
+      <div className="w-full h-[400px] -mr-5 flex justify-center">
         <Line data={chartData} options={options} />
       </div>
     </div>

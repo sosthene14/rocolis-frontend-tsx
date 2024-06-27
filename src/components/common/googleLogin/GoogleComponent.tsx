@@ -2,13 +2,14 @@ import { postDatas } from "@/api/Routes";
 import { useGoogleLogin } from "@react-oauth/google";
 import { toast } from "react-toastify";
 import { IdataLogin } from "../connexionInfo/ConnexionInfo";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface IGoogleLogin {
   isChecked: boolean;
   login_info: IdataLogin;
   uri: string;
   _haveSumited: boolean;
+  setServerResponse: Dispatch<SetStateAction<{ [key: string]: string; } | undefined>>
 }
 
 export const GoogleComponent = ({
@@ -16,6 +17,7 @@ export const GoogleComponent = ({
   login_info,
   uri,
   _haveSumited,
+  setServerResponse,
 }: IGoogleLogin) => {
   const [haveSumited, setHaveSumited] = useState(false);
 
@@ -28,7 +30,7 @@ export const GoogleComponent = ({
         return;
       }
       try {
-        await postDatas(uri, login_info, tokenResponse.access_token);
+        await setServerResponse(await postDatas(uri, login_info, tokenResponse.access_token));
       } catch (error) {
         toast.error(
           "Une erreur s'est produite lors de la connexion avec Google."
@@ -37,7 +39,6 @@ export const GoogleComponent = ({
     },
   });
 
-  
   useEffect(() => {
     if (_haveSumited) {
       setHaveSumited(true);

@@ -70,6 +70,7 @@ const getYears = (data: {
 const ChartComponent: React.FC<Props> = ({ data }) => {
   const [selectedYear, setSelectedYear] = useState<string | null>(null);
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const [openModal, setOpenModal] = useState(false);
   const [adsNumber, setAdsNumber] = useState<number>(0);
 
@@ -137,7 +138,9 @@ const ChartComponent: React.FC<Props> = ({ data }) => {
     onClick: (_event: ChartEvent, elements: ActiveElement[], chart: Chart) => {
       console.log(elements, chart, _event);
       if (elements.length) {
+        setSelectedDay(getChartData()[elements[0].index].day.toString());
         const { datasetIndex, index } = elements[0];
+        console.log("datasetIndex", datasetIndex, "index", index);
         const value = chart.data.datasets[datasetIndex].data[index];
         setAdsNumber(value as number);
         setOpenModal(true);
@@ -150,9 +153,9 @@ const ChartComponent: React.FC<Props> = ({ data }) => {
       },
       title: {
         display: true,
-        text: `Publications de ${(selectedMonth &&
-          months[Number(selectedMonth) - 1].label) ||
-          ""} ${selectedYear || ""}`,
+        text: `Publications de ${
+          (selectedMonth && months[Number(selectedMonth) - 1]?.label) || ""
+        } ${selectedYear || ""}`,
       },
     },
     scales: {
@@ -172,7 +175,7 @@ const ChartComponent: React.FC<Props> = ({ data }) => {
   };
 
   return (
-    <div className="w-[90%] md:w-[500px] overflow-x-hidden">
+    <div className="w-[95%] md:w-[500px] overflow-x-hidden">
       <div>
         <Select
           onValueChange={(value: string) => handleYearChange(value)}
@@ -207,7 +210,7 @@ const ChartComponent: React.FC<Props> = ({ data }) => {
           >
             <SelectValue>
               {selectedMonth
-                ? months[Number(selectedMonth) - 1].label
+                ? months[Number(selectedMonth) - 1]?.label
                 : "Selectionez un mois"}
             </SelectValue>
           </SelectTrigger>
@@ -238,9 +241,12 @@ const ChartComponent: React.FC<Props> = ({ data }) => {
       </div>
 
       <div className="w-[350px] overflow-x-scroll md:w-[500px] h-auto ">
-        <Line  data={chartData} options={options} />
+        <Line data={chartData} options={options} />
       </div>
       <DataSeenChoosenDay
+        selectedMonth={selectedMonth || ""}
+        selectedYear={selectedYear || ""}
+        selectedDay={selectedDay || ""}
         adsNumber={adsNumber}
         ads={loadedDatas.slice(0, adsNumber)}
         setOpenModal={setOpenModal}
@@ -257,11 +263,17 @@ const DataSeenChoosenDay = ({
   setOpenModal,
   openModal,
   adsNumber,
+  selectedDay,
+  selectedMonth,
+  selectedYear,
 }: {
   ads: IPublishAdd[];
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
   openModal: boolean;
   adsNumber: number;
+  selectedDay: string;
+  selectedMonth: string;
+  selectedYear: string;
 }) => {
   return (
     <Modal
@@ -273,9 +285,10 @@ const DataSeenChoosenDay = ({
     >
       <Modal.Header className="dark:bg-slate-700  bg-slate-100 rounded-md" />
       <Modal.Body className="dark:bg-slate-700  text-sm  bg-slate-100 rounded-md">
-        <div className="p-4 max-w-screen-lg  mx-auto">
+        <div className="p-4 max-w-screen-xl  mx-auto">
           <h2 className="text-xl font-bold mb-6 text-center">
-            Annonces que les gens ont consultés le 12 janvier 2022
+            Annonces que les gens ont consultés le {selectedDay}{" "}
+            {months[Number(selectedMonth) - 1]?.label} {selectedYear}
           </h2>
           <div className="mb-6 ">
             <div className=" text-sm text-center mb-2">
@@ -287,7 +300,7 @@ const DataSeenChoosenDay = ({
             {ads.slice(0, adsNumber).map((ad, index) => (
               <div
                 key={index}
-                className="border h-min w-96 mx-auto rounded-lg p-4 mb-5 shadow-md bg-white dark:bg-slate-800"
+                className="border h-min w-[350px] mx-auto rounded-lg p-2 mb-5 shadow-md bg-white dark:bg-slate-800"
               >
                 <div className="flex justify-center gap-20  items-center mb-5">
                   <div className="text-xl font-semibold">{ad.travelerName}</div>

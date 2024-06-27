@@ -2,7 +2,7 @@ import {  publishAddLabel, publishAddTextarea } from "@/common/ClassNames";
 import { IInputField } from "../interfaces/interfaces";
 
 export const TextAreaField = ({ label, ...props }: IInputField) => (
-    <div className="w-[275px] mt-5 mx-auto md:w-[620px] lg:w-[830px]">
+    <div className="w-[300px] mt-5 mx-auto md:w-[620px] lg:w-[830px]">
       <label className={publishAddLabel}>
         {label}
       </label>

@@ -46,7 +46,7 @@ export const SearchForm = () => {
 
   const SearchFormHeader = () => {
     return (
-      <div className="text-neutral-900 justify-center text-base font-semibold font-['Montserrat'] flex gap-2 p-5 items-center ">
+      <div className="text-neutral-900 z-20 second-component justify-center text-base font-semibold font-['Montserrat'] flex gap-2 p-5 items-center ">
         <div className="hidden sm:flex">
           <PlaneIcon />
         </div>
@@ -59,7 +59,7 @@ export const SearchForm = () => {
   };
   return (
     <div
-      className="bg-white py-5  rounded-xl -mt-20 w-[90%] md:w-[80%] lg:w-[70%]  m-auto"
+      className="bg-white py-5 second-component  rounded-xl -mt-20 w-[90%] md:w-[80%] lg:w-[70%]  m-auto"
       style={{ boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px" }}
     >
       <SearchFormHeader />

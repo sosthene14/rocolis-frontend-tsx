@@ -12,6 +12,8 @@ import rdc from "./rdc.webp";
 import senegal from "./senegal.webp";
 import userIcon from "./user.png"
 import immeubleBgLogin from "./immeublebg.webp"
+import logoWhite from "./logorhtwhite.png"
+import logoBlack from "./logorhtblack.png"
 
 
 export const heroImg = heroImage;
@@ -19,6 +21,7 @@ export const userIconImg = userIcon
 export const ImmeubleBgLogin = immeubleBgLogin
 
 export const picsList = [ad1Pic, ad2Pic];
+export const logoList = [logoWhite, logoBlack];
 
 export const destinationsList = [
   afriqueSud,

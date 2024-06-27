@@ -44,11 +44,11 @@ export const AdsPreview = ({
   seeBtn,
 }: IAdsPreviewProps) => {
   return (
-    <div className="flex flex-col mt-10 mx-auto w-96 py-7 dark:bg-slate-700 bg-slate-100  rounded-md shadow-xl px-5">
+    <div className="flex flex-col mt-10 mx-auto w-[320px] sm:w-96 py-7 dark:bg-slate-700 bg-slate-100  rounded-md shadow-xl px-5">
       <div className="flex justify-between items-center">
         <p className="text-[15px] mb-5 text-rose-400">Annonce non validée </p>
         <p className="flex justify-between items-center gap-2">
-          <EyeIcon className="bg-slate-800 p-1 rounded-full" size={20} /> {loadedDatas?.viewNumber}
+          <EyeIcon className="dark:bg-slate-800 bg-slate-200 p-1 rounded-full" size={20} /> {loadedDatas?.viewNumber}
         </p>
       </div>
       <Label
