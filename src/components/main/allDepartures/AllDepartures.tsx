@@ -5,7 +5,7 @@ import {CardAds} from "@/components/common/cardsAds/CardAds";
 
 export const AllDepartures = () => {
   return (
-    <div className="">
+    <div className="ml-2">
       <div className="flex flex-col items-center mb-8">
         <p className={titleClassNames}>Autres départs</p>
 

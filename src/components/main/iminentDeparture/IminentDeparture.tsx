@@ -5,7 +5,7 @@ import { SeeMoreBtn } from "@/components/common/button/SeeMoreBtn";
 
 export const ImminentDeparture = () => {
   return (
-    <div className="">
+    <div className="ml-2">
       <div className="flex flex-col items-center mb-8">
         <p className={titleClassNames}>Départs imminents</p>
         <p className={subTitlesClassNames}>

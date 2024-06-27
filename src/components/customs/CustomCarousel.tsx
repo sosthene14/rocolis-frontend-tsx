@@ -25,7 +25,7 @@ export function CustomCarousel() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 1,
@@ -78,7 +78,7 @@ export function CustomCarousel() {
     <div className="">
       <ToastContainer />
 
-      <div className="slider-container relative overflow-y-hidden h-96">
+      <div className="slider-container relative overflow-y-hidden h-[400px]">
         <Slider
           arrows={false}
           className="h-[500px] overflow-y-hidden"

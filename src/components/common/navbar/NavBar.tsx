@@ -84,7 +84,7 @@ const NavBar = () => {
         <MenuList menuNavBar={menuNavBar} />
         <div>
           <NavLink to={"/"}>
-            <img loading="lazy" className="w-[200px] fade-in-top -ml-3" src={logoLink} />
+            <img loading="lazy" className="w-[200px] fade-in-top ml-1" src={logoLink} />
           </NavLink>
         </div>
         <div className="flex gap-2 sm:gap-5 items-center">
