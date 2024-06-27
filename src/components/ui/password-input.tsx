@@ -19,7 +19,7 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         <button
-          className="absolute right-16 md:right-0 z-50 top-0 h-full px-3 py-2 hover:bg-transparent"
+          className="absolute right-0 md:right-0 z-50 top-0 h-full px-3 py-2 hover:bg-transparent"
           type="button"
           onClick={() => setShowPassword(!showPassword)}
         >
