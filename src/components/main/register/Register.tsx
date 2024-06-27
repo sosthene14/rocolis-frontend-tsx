@@ -98,7 +98,7 @@ export const Register = () => {
   };
   return (
     <div>
-      <div className="absolute right-10 mt-10">
+      <div className="absolute right-10 mt-5">
         <ConnexionInfo handleDataLogin={handleDataLogin} />
         <ModeToggle />
 
