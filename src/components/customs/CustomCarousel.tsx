@@ -24,6 +24,7 @@ export function CustomCarousel() {
   const [updateCount, setUpdateCount] = useState(0);
   const settings = {
     dots: false,
+    touchThreshold: 1000,
     infinite: true,
     speed: 1000,
     slidesToShow: 4,
