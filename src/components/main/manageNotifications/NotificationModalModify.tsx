@@ -41,20 +41,24 @@ export const NotificationModalModify = ({
       >
         <Modal.Header className="dark:bg-slate-700  bg-slate-100 rounded-md" />
         <Modal.Body className="dark:bg-slate-700 bg-slate-100 rounded-md">
-          <ModalInputs shareDatas={(data) => shareDatas && shareDatas(data)}  loadedData={loadedData} />
+          <ModalInputs
+            shareDatas={(data) => shareDatas && shareDatas(data)}
+            loadedData={loadedData}
+          />
         </Modal.Body>
       </Modal>
     </div>
   );
 };
 
-const ModalInputs = ({ loadedData,shareDatas }: IProps) => {
+const ModalInputs = ({ loadedData, shareDatas }: IProps) => {
   const [data, setData] = useState<INotificationsData>(
     loadedData || initializedData
   );
   const [haveReseted] = useState(false);
   const [disabledInput] = useState(false);
-  const { notificationsDatas,_setNotificationsDatas } = useNotificationsDatasStore();
+  const { notificationsDatas, _setNotificationsDatas } =
+    useNotificationsDatasStore();
   const theme = useTheme().theme;
   const systemTheme = getSystemTheme();
   const classForDatePicker =
@@ -81,15 +85,19 @@ const ModalInputs = ({ loadedData,shareDatas }: IProps) => {
       [field]: value,
     }));
   };
- 
-  const replaceObjectByUUID = (array: INotificationsData[], uuid: string, newObject: INotificationsData): INotificationsData[] => {
-    const index = array.findIndex(obj => obj.uuid === uuid);
+
+  const replaceObjectByUUID = (
+    array: INotificationsData[],
+    uuid: string,
+    newObject: INotificationsData
+  ): INotificationsData[] => {
+    const index = array.findIndex((obj) => obj.uuid === uuid);
     if (index !== -1) {
       array[index] = newObject;
     } else {
       console.warn(`UUID ${uuid} not found in array`);
     }
-    _setNotificationsDatas(array)
+    _setNotificationsDatas(array);
     shareDatas && shareDatas(array);
     return array;
   };
@@ -152,7 +160,7 @@ const ModalInputs = ({ loadedData,shareDatas }: IProps) => {
           value={data.notificationDepartureDate as string}
           defaultValue={data.notificationDepartureDate as string}
           required={true}
-          minDate={minDate}
+          minDate={minDate as string}
           disabled={disabledInput}
           onChange={(_date, dateString) =>
             handleDateChange("notificationDepartureDate", dateString)

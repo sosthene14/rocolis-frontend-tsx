@@ -17,15 +17,21 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getCurrentDateSlashFormat = () => {
-  const currentDate = new Date();
+export const getCurrentDateSlashFormat = (value: Date | string) => {
+  if (typeof value === "undefined" || value === null || value === "") {
+    return "";
+  }
+  if (isDateValidSlashed(value as string)) {
+    return value;
+  }
+
+  const currentDate = new Date(value);
   const year = currentDate.getFullYear();
   const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-  const day = String(currentDate.getDate() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
   const formattedDate = `${day}/${month}/${year}`;
   return formattedDate;
 };
-
 export const isDateValidSlashed = (dateString: string) => {
   return dayjs(dateString, "DD/MM/YYYY", true).isValid();
 };

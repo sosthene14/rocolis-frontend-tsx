@@ -4,18 +4,18 @@ import {
   publishAddInputStyle,
 } from "@/common/ClassNames";
 import { ModeToggle } from "@/components/customs/ModeToggle";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Modal } from "flowbite-react";
 import { postDatas } from "@/api/Routes";
 import { useAuthStore } from "@/store/store";
-import { toast } from "react-toastify";
+import { message } from "antd";
 const ModeToggleContainer = ({ icon }: { icon: boolean }) => {
   return (
     <div className="z-50 absolute right-10 mt-10">{icon && <ModeToggle />}</div>
   );
 };
 
-const ModalHeader = ({children}: {children: React.ReactNode}) => {
+const ModalHeader = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="sm:flex sm:items-start -mt-2">
       {children}
@@ -74,30 +74,51 @@ const CodeInput = ({
 const ModalFooter = ({
   handleModalOpened,
   code,
+  shouldModifyInformations = true,
+  handleCanModifyInformations,
+  email,
+  uriOtp = "/api/v1/verify-otp",
+  setProvisoireToken
 }: {
   handleModalOpened: (value: boolean) => void;
   code: string;
+  shouldModifyInformations: boolean;
+  handleCanModifyInformations: (value: boolean) => void;
+  email?: string;
+  uriOtp?: string;
+  setProvisoireToken ?: (value: string) => void;
 }) => {
   const { accessToken, sub } = useAuthStore();
+  const [messageApi, contextHolder] = message.useMessage();
+  const errorM = useCallback(() => {
+    messageApi.error("Code invalide");
+  }, [messageApi]);
   const checkOtpCode = async () => {
     await postDatas(
-      "/api/v1/verify-otp",
+      uriOtp,
       {
-        sub: sub,
+        sub: sub || email,
         otp_code: code,
       },
       accessToken,
       false
     ).then((res) => {
       if (res) {
-        window.location.reload();
+        if (shouldModifyInformations) {
+          window.location.reload();
+        } else {
+          setProvisoireToken && setProvisoireToken(res.token);
+          handleCanModifyInformations(true);
+          handleModalOpened(false);
+        }
       } else {
-        toast.error("code invalide");
+        errorM()
       }
     });
   };
   return (
     <div className="mt-5 gap-5 sm:mt-4 sm:flex sm:flex-row-reverse flex justify-center flex-wrap">
+       {contextHolder}
       <button
         onClick={() => code.trim() && checkOtpCode()}
         type="button"
@@ -140,22 +161,37 @@ export const ValidationCode = ({
   isOpened,
   handleClose,
   handleResent,
-  children
+  children,
+  shouldModifyInformations,
+  handleCanModifyInformations,
+  email,
+  uriOtp,
+  setProvisoireToken
 }: {
   icon: boolean;
   isOpened: boolean;
   handleClose: (value: boolean) => void;
   handleResent: (value: boolean) => void;
-  children?: React.ReactNode
+  children?: React.ReactNode;
+  shouldModifyInformations?: boolean;
+  handleCanModifyInformations?: (value: boolean) => void;
+  email?: string;
+  uriOtp?: string;
+  setProvisoireToken ?: (value: string) => void
 }) => {
   return (
     <div>
       <ModalComponent
-      children={children}
+      setProvisoireToken={setProvisoireToken}
+        uriOtp={uriOtp}
+        email={email}
+        children={children}
         handleClose={handleClose}
         icon={icon}
         isOpened={isOpened}
         handleResent={handleResent}
+        shouldModifyInformations={shouldModifyInformations}
+        handleCanModifyInformations={handleCanModifyInformations}
       />
     </div>
   );
@@ -166,13 +202,23 @@ const ModalComponent = ({
   isOpened,
   handleClose,
   handleResent,
-  children
+  children,
+  shouldModifyInformations,
+  handleCanModifyInformations,
+  email,
+  uriOtp,
+  setProvisoireToken
 }: {
   icon: boolean;
   isOpened: boolean;
   handleClose: (value: boolean) => void;
-  handleResent: (value: boolean) => void
-  children?: React.ReactNode
+  handleResent: (value: boolean) => void;
+  children?: React.ReactNode;
+  shouldModifyInformations?: boolean;
+  handleCanModifyInformations?: (value: boolean) => void;
+  email?: string;
+  uriOtp?: string;
+  setProvisoireToken ?: (value: string) => void;
 }) => {
   const [openModal, setOpenModal] = useState(true);
   const [code, setCode] = useState("");
@@ -181,8 +227,7 @@ const ModalComponent = ({
   }, [isOpened]);
   useEffect(() => {
     handleClose(openModal);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [openModal]);
+  }, [handleClose, openModal]);
 
   return (
     <Modal show={openModal} size="lg" popup onClose={() => setOpenModal(false)}>
@@ -192,7 +237,17 @@ const ModalComponent = ({
         <form>
           <ModalHeader children={children} />
           <CodeInput handeleCodeChange={setCode} />
-          <ModalFooter code={code} handleModalOpened={setOpenModal} />
+          <ModalFooter
+          setProvisoireToken={setProvisoireToken}
+            uriOtp={uriOtp}
+            email={email}
+            shouldModifyInformations={shouldModifyInformations as boolean}
+            handleCanModifyInformations={
+              handleCanModifyInformations as (value: boolean) => void
+            }
+            code={code}
+            handleModalOpened={setOpenModal}
+          />
           <ResendLink handleResent={handleResent} />
         </form>
       </Modal.Body>

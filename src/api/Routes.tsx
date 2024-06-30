@@ -62,7 +62,6 @@ export const getRefreshToken = async (sub: string, refreshToken: string) => {
       return { success: false, data: null };
     }
   } catch (error) {
-    toast.error("Une erreur s'est produite lors du rafraîchissement du token.");
     Cookies.remove("access_token");
     Cookies.remove("refresh_token");
     return { success: false, data: null };

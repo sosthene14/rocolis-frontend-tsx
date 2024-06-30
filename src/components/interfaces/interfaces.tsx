@@ -19,7 +19,7 @@ export interface IPublishAdd {
   publishedBy: string;
   travelerName: string;
   travelerPhone: string;
-
+  sub?: string;
   departureCity: string;
   departureCountry: string;
   destinationCity: string;
@@ -30,8 +30,6 @@ export interface IPublishAdd {
   availableKilos: number;
   kilosPrice: number;
   currency: string;
-  currencyLabel: string;
-
   viewNumber: number;
   description: string;
   constraintes: string;

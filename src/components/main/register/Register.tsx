@@ -2,7 +2,6 @@ import { ImmeubleBgLogin } from "@/assets/images/Images";
 import { linkClassNames, registerInput } from "@/common/ClassNames";
 import { PasswordInput } from "@/components/ui/password-input";
 import { Modal } from "flowbite-react";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import {
   Tooltip,
   TooltipContent,
@@ -34,43 +33,14 @@ import ConnexionInfo, {
 } from "@/components/common/connexionInfo/ConnexionInfo";
 import { initializedRegistringData } from "@/constants/variables";
 import { GoogleComponent } from "@/components/common/googleLogin/GoogleComponent";
-const googleId = import.meta.env.VITE_CLIENT_ID_GOOGLE;
-import { useAuthStore } from "@/store/store";
-import { getSubFromAccessToken, setCookies } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
+import { HandleRedirection } from "@/components/common/handleRedirection/HandleRedirection";
 export const Register = () => {
   const [data, setData] = useState<registeringUser>(initializedRegistringData);
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [haveSubmitedGoogle, setHaveSubmitedGoogle] = useState(false);
-  const Navigate = useNavigate();
   const [serverResponse, setServerResponse] = useState<{
     [key: string]: string;
   }>();
-  const { _setAccessToken, _setRefreshToken, _setIsAuth, _setSub } =
-    useAuthStore();
-
-  useEffect(() => {
-    if (
-      serverResponse &&
-      serverResponse?.access_token?.length > 0 &&
-      serverResponse?.refresh_token?.length > 0
-    ) {
-      _setAccessToken(serverResponse?.access_token);
-      _setRefreshToken(serverResponse?.refresh_token);
-      _setIsAuth(true);
-      setCookies("access_token", serverResponse?.access_token);
-      setCookies("refresh_token", serverResponse?.refresh_token);
-      _setSub(getSubFromAccessToken(serverResponse?.access_token) || null);
-      Navigate("/");
-    }
-  }, [
-    serverResponse,
-    _setAccessToken,
-    _setRefreshToken,
-    _setIsAuth,
-    _setSub,
-    Navigate,
-  ]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -101,8 +71,7 @@ export const Register = () => {
       <div className="absolute right-10 mt-5">
         <ConnexionInfo handleDataLogin={handleDataLogin} />
         <ModeToggle />
-
-        <GoogleOAuthProvider clientId={googleId}>
+        <HandleRedirection serverResponse={serverResponse} />
           <GoogleComponent
             setServerResponse={setServerResponse}
             isChecked={isChecked}
@@ -110,7 +79,6 @@ export const Register = () => {
             uri="/api/v1/google/register"
             _haveSumited={haveSubmitedGoogle}
           />
-        </GoogleOAuthProvider>
       </div>
       <form
         onSubmit={handleSubmit}

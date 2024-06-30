@@ -1,3 +1,4 @@
+/* eslint-disable react-compiler/react-compiler */
 // AuthContext.tsx
 import React, { createContext, useEffect } from "react";
 import { getRefreshToken, postDatas } from "@/api/Routes";
@@ -79,6 +80,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 useEffect(() => {
   accessToken && sub && getUser();
+// eslint-disable-next-line react-compiler/react-compiler
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [accessToken,sub]);
   const handleTokenRefresh = (data: {

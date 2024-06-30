@@ -1,3 +1,4 @@
+/* eslint-disable react-compiler/react-compiler */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn, getCountryFullname } from "@/lib/utils";
@@ -33,6 +34,7 @@ interface CustomSelectProps {
   defaultQuery?: string;
   datas: { [key: string]: string }[];
   haveReseted?: boolean;
+  canDeleteInput?: boolean;
 }
 
 export function CustomSelect({
@@ -48,6 +50,7 @@ export function CustomSelect({
   classNamePopover = "w-[250px] p-0 border-none",
   classNameInput = "pb-2 my-2 text-slate-800 text-sm ",
   disabled,
+  canDeleteInput = true
 }: CustomSelectProps) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
@@ -64,27 +67,30 @@ export function CustomSelect({
     if (defaultvalue?.length > 0) {
       try {
         JSON.parse(defaultvalue);
+        setValue("")
       } catch (error) {
         setValue(defaultvalue);
       }
     }
+    console.log(value)
   }, [defaultvalue]);
 
   useEffect(() => {
-    if (value?.length > 0) {
-      onChange(value,countryName);
+    if (value?.length > 0 || value === "") {
+      onChange(value, countryName);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, countryName]);
 
   const handleClear = () => {
     setValue("");
     if (label === "departure") {
       localStorage.removeItem("departure");
-      _setDeparture(null);
+      setValue("");
+      _setDeparture("");
     } else if (label === "destination") {
       localStorage.removeItem("destination");
-      _setDestination(null);
+      setValue("");
+      _setDestination("");
     }
   };
 
@@ -102,14 +108,16 @@ export function CustomSelect({
     });
   }, [query]);
 
-  const visibleDatas = useMemo(() => filteredAndSortedDatas.slice(0, 10), [
-    filteredAndSortedDatas,
-  ]);
+  const visibleDatas = useMemo(
+    () => filteredAndSortedDatas.slice(0, 10),
+    [filteredAndSortedDatas]
+  );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger disabled={disabled} asChild>
         <Button
+          aria-required
           variant="outline"
           role="combobox"
           aria-expanded={open}
@@ -118,14 +126,17 @@ export function CustomSelect({
           {value ? datas.find((data) => data.value === value)?.label : cityType}
           <div className="flex item-center gap-1">
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-            <TypcnDelete
+            {
+              canDeleteInput && <TypcnDelete
               onClick={() => handleClear()}
               className="w-5  h-5 z-99"
             />
+            }
+            
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className={classNamePopover}>
+      <PopoverContent aria-required={true} className={classNamePopover}>
         <Command className="bg-white ">
           <div className="relative">
             <CommandInput
@@ -133,6 +144,7 @@ export function CustomSelect({
               placeholder={cityType}
               value={query}
               onValueChange={setQuery}
+              required
             />
             <div className="absolute -mt-0 inset-y-0 right-10 flex items-center pr-2">
               <TypcnDelete
@@ -145,7 +157,7 @@ export function CustomSelect({
           <CommandEmpty className="text-slate-800 text-sm text-center">
             {notFoundText}
           </CommandEmpty>
-          <CommandGroup className="mt-3">
+          <CommandGroup aria-required={true} className="mt-3">
             <CommandList>
               {visibleDatas.map((option) => (
                 <CommandItem

@@ -33,21 +33,12 @@ interface IDeparture {
   _setDeparture: (departure: string | null) => void;
 }
 
-export const useDepartureStore = create<IDeparture>()(
-  devtools(
-    persist(
-      (set) => ({
-        errorDeparture: false,
-        setErrorDeparture: (errorDeparture: boolean) => set({ errorDeparture }),
-        departure: null,
-        _setDeparture: (departure: string | null) => set({ departure }),
-      }),
-      {
-        name: "departure",
-      }
-    )
-  )
-);
+export const useDepartureStore = create<IDeparture>()((set) => ({
+  errorDeparture: false,
+  setErrorDeparture: (errorDeparture: boolean) => set({ errorDeparture }),
+  departure: null,
+  _setDeparture: (departure: string | null) => set({ departure }),
+}));
 
 interface IDestination {
   destination: string | null;
@@ -56,22 +47,12 @@ interface IDestination {
   setErrorDestination: (error: boolean) => void;
 }
 
-export const useDestinationStore = create<IDestination>()(
-  devtools(
-    persist(
-      (set) => ({
-        errorDestination: false,
-        setErrorDestination: (errorDestination: boolean) =>
-          set({ errorDestination }),
-        destination: null,
-        _setDestination: (destination: string | null) => set({ destination }),
-      }),
-      {
-        name: "destination",
-      }
-    )
-  )
-);
+export const useDestinationStore = create<IDestination>()((set) => ({
+  errorDestination: false,
+  setErrorDestination: (errorDestination: boolean) => set({ errorDestination }),
+  destination: null,
+  _setDestination: (destination: string | null) => set({ destination }),
+}));
 interface IUserNotifications {
   notificationsDatas: INotificationsData[];
   _setNotificationsDatas: (notificationsDatas: INotificationsData[]) => void;
@@ -132,7 +113,7 @@ export interface IUserDatas {
 }
 
 export const useUserDatasStore = create<IUserDatas>()((set) => ({
-  userData:{
+  userData: {
     name: "",
     firstName: "",
     email: "",
@@ -141,7 +122,7 @@ export const useUserDatasStore = create<IUserDatas>()((set) => ({
     isbanned: false,
     total_ads_expeditor: 0,
     total_ads_traveler: 0,
-    isVerified: true
+    isVerified: true,
   },
   _setUserDatas: (userData: IUserDatas["userData"]) => set({ userData }),
 }));

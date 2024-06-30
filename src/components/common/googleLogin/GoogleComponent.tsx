@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 interface IGoogleLogin {
   isChecked: boolean;
-  login_info: IdataLogin;
+  login_info: IdataLogin | undefined;
   uri: string;
   _haveSumited: boolean;
   setServerResponse: Dispatch<SetStateAction<{ [key: string]: string; } | undefined>>

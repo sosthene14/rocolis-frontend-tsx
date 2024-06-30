@@ -83,7 +83,6 @@ export const initializedData: IPublishAdd = {
   availableKilos: 0,
   kilosPrice: 0,
   currency: "",
-  currencyLabel: "",
   viewNumber: 0,
   description: "",
   constraintes: "",
@@ -119,7 +118,7 @@ export const currencyList = [
   { value: "INR", label: "INR (₹)" },
 ];
 
-export const minDate = getCurrentDateSlashFormat();
+export const minDate = getCurrentDateSlashFormat(new Date());
 
 export const chatBotSteps = [
   {

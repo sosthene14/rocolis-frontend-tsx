@@ -1,3 +1,4 @@
+/* eslint-disable react-compiler/react-compiler */
 import { Modal } from "flowbite-react";
 import React, {  useState } from "react";
 import {
@@ -143,7 +144,7 @@ const ModalInputs = ({ shareData,setOpenModal,loadedData }: IProps) => {
           value={data.notificationDepartureDate as string}
           defaultValue={data.notificationDepartureDate as string}
           required={true}
-          minDate={minDate}
+          minDate={minDate as string}
           disabled={disabledInput}
           onChange={(_date, dateString) =>
             handleDateChange("notificationDepartureDate", dateString)

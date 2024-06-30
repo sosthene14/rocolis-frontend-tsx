@@ -88,7 +88,6 @@ export function CustomCarousel() {
           {...settings}
         >
           {Array.from({ length: 10 }).map((_, index) => (
-            <>
               <CardAds
                 key={index}
                 index={index}
@@ -97,7 +96,6 @@ export function CustomCarousel() {
                 handlePopoverClick={handlePopoverClick}
                 picsList={picsList}
               />
-            </>
           ))}
         </Slider>
 

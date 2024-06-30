@@ -28,7 +28,6 @@ export const generateLoadedDatas = (count: number): IPublishAdd[] => {
       availableKilos: 20 + i * 10,
       kilosPrice: 10.0 + i * 10,
       currency: "XOF",
-      currencyLabel: "FCFA (XOF)",
       viewNumber: 15,
       description: "aucune",
       constraintes: "aucune",
